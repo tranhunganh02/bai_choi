@@ -1,9 +1,7 @@
 import 'dart:ui';
-
-import 'package:bai_choi/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-
+import 'package:bai_choi/utils/routes.dart' as route;
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -17,7 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
      double height = MediaQuery.of(context).size.height;
-      double width = MediaQuery.of(context).size.width;
     return  Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -25,28 +22,42 @@ class _HomeScreenState extends State<HomeScreen> {
             fit: BoxFit.cover,
           )
         ),
-        child: BackdropFilter(
-           filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
-            child: Center(         
-              child: SizedBox(
-                height: height,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 100,
-                      //color: Colors.lightBlue,
-                      child: const ListTile(
-                    
-                        title: Text("Bài chòi",style: TextStyle(fontFamily: "DelaGothicOne", fontSize: 40, fontWeight: FontWeight.w900)),
-                        subtitle: Text("Mang giá trị dân gian đến với mọi người"),
-                
-                      ),
-                    ),
-                    Container(
+        child: Body(height, context),
+      ),
+  
+      floatingActionButton: optional_acction(context)
+
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  BackdropFilter Body(double height, BuildContext context) {
+    return BackdropFilter(
+         filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
+        child: Padding(
+          padding:const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+          child: Center(         
+            child: SizedBox(
+              height: height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Title_game(),
+                  Play_button(context),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+  }
+
+  // ignore: non_constant_identifier_names
+  GestureDetector Play_button(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, route.introductionGameScreen),
+      child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                          color: Theme.of(context).primaryColor,
@@ -54,17 +65,21 @@ class _HomeScreenState extends State<HomeScreen> {
                      
                       height: 80,
                       width: 80,
-                      child: Center(child: IconButton(onPressed: (){}, icon: Icon(Icons.play_arrow, size: 50, color: Theme.of(context).colorScheme.onPrimary,)))),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-
-      floatingActionButton: optional_acction(context)
+                      child: Center(child: Icon(Icons.play_arrow, size: 50, color: Theme.of(context).colorScheme.onPrimary,))),
     );
+  }
+
+  Container Title_game() {
+    return Container(
+                    height: 100,
+                    //color: Colors.lightBlue,
+                    child: const ListTile(
+                  
+                      title: Text("Bài chòi",style: TextStyle(fontFamily: "DelaGothicOne", fontSize: 40, fontWeight: FontWeight.w900)),
+                      subtitle: Text("Mang giá trị dân gian đến với mọi người"),
+              
+                    ),
+                  );
   }
 
   // ignore: non_constant_identifier_names
@@ -81,11 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
           SpeedDialChild(
             shape: const CircleBorder(),
-          label: "Hướng dẫn",
+          label: "Giới thiệu game",
           onTap: (){
-            setState(() {
-             
-            });
+            Navigator.pushNamed(context, route.introductionGameScreen);
           },
            child:const Icon(Icons.question_mark, )
         ),

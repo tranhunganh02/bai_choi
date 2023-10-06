@@ -1,7 +1,7 @@
 import 'package:bai_choi/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bai_choi/screens/home/index.dart';
+import 'utils/routes.dart' as route;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -21,13 +21,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-      home: HomeScreen(),
-      // initialRoute: '/',
-      // routes:{
-      //   '/':(context) => SignInScreen(),
-      //   '/home':(context) => HomeScreen(),
-      //   '/sign_up':(context) => SignUpScreen(),
-      // },
+      onGenerateRoute: route.controller,
+      initialRoute: route.homeScreen,
     );
   }
 }

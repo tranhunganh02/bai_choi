@@ -1,18 +1,25 @@
-import 'package:bai_choi/utils/routes_name.dart';
-import 'package:flutter/material.dart';
-import '../screens/home/index.dart';
 
-class Routes {
-  static MaterialPageRoute generateRoute(RouteSettings settings){
+import 'package:bai_choi/screens/home/index.dart';
+import 'package:bai_choi/screens/introduction_game/index.dart';
+import 'package:flutter/material.dart'; 
+
+const String homeScreen = 'homeScreen';
+
+// ignore: constant_identifier_names
+const String introductionGameScreen = 'introductionScreen';
+
+const String roomScreen = 'roomScreen';
+
+  Route<dynamic> controller (RouteSettings settings){
     switch (settings.name) {
-      case RoutesName.home:
-        return MaterialPageRoute(builder: (BuildContext context) => const HomeScreen());
+      case homeScreen:
+        return MaterialPageRoute(builder: (context) =>const HomeScreen());
 
-      case RoutesName.htplay:
-        return MaterialPageRoute(builder: (BuildContext context) => const Column());
+      case introductionGameScreen:
+        return MaterialPageRoute(builder: (context) => const IntroductionScreen());
 
-      case RoutesName.room:
-        return MaterialPageRoute(builder: (BuildContext context) => const Scaffold(
+      case roomScreen:
+        return MaterialPageRoute(builder: (context) => const Scaffold(
           body: Center(
             child: Text("room"),
           ),
@@ -21,5 +28,3 @@ class Routes {
         return MaterialPageRoute(builder: (BuildContext context) => const HomeScreen());
     }
   }
-
-}
