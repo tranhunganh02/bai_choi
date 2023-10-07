@@ -2,6 +2,10 @@ import 'package:bai_choi/screens/introduction_game/components/introduce_screen.d
 import 'package:bai_choi/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:bai_choi/model/Card.dart';
+
+import 'components/list_card_1.dart';
+import 'components/title_list_card.dart';
 
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({super.key});
@@ -13,54 +17,52 @@ class IntroductionScreen extends StatefulWidget {
 class _IntroductionScreenState extends State<IntroductionScreen> {
   @override
   Widget build(BuildContext context) {
-    Color iconColor = Theme.of(context).colorScheme.secondary.withOpacity(0.9);
- double imageSize = 100.0;
-  bool isImageExpanded = false;
-
-  void toggleImageSize() {
-    setState(() {
-      imageSize = isImageExpanded ? 100.0 : 300.0;
-      isImageExpanded = !isImageExpanded;
-    });
-  }
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF861414),
-          bottom: TabBar(
-            labelColor: Colors.white,
-            unselectedLabelColor:
-                Theme.of(context).colorScheme.tertiaryContainer,
-            tabs: const [
-              Tab(text: "Giới thiệu"),
-              Tab(text: "Cách chơi"),
-              Tab(text: "Lá bài"),
-            ],
-            indicatorColor: const Color(0xFF861414),
+          leading: IconButton(
+            iconSize: 20,
+            color: Colors.white,
+            style:const ButtonStyle(
+                alignment: Alignment.center,
+                padding: MaterialStatePropertyAll(
+                    EdgeInsets.all(5))), // Customize the arrow color here
+
+            onPressed: () {
+              // Handle back button press here
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(20.0), // Set
+            child: TabBar(
+              indicatorSize: TabBarIndicatorSize.tab,
+              labelColor: Colors.white,
+              unselectedLabelColor:
+                  Theme.of(context).colorScheme.tertiaryContainer,
+              labelStyle: const TextStyle(fontFamily: "DelaGothicOne"),
+              tabs: const [
+                Tab(text: "Giới thiệu"),
+                Tab(text: "Cách chơi"),
+                Tab(text: "Lá bài"),
+              ],
+              indicatorColor: const Color(0xFF861414),
+            ),
           ),
         ),
         body: TabBarView(
           children: [
             IntroduceScreen(context),
             Icon(Icons.directions_transit),
-            Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(image: NetworkImage("https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/db1c5d66927243.5c0a2613de7c9.jpg"),
-            fit: BoxFit.cover,
-          )
-        ),
-        
-      ),
+            ListCard()
           ],
         ),
       ),
     );
   }
-
-  
-
-
 
   SpeedDial optional_acction(BuildContext context) {
     return SpeedDial(

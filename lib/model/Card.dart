@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:bai_choi/model/CardType.dart';
 
 class Card {
@@ -67,3 +68,8 @@ final Card thatLieu = Card(7, "Thất Liễu", CardType.phoVawn, 'assets/img/car
 final Card tamTien = Card(8, "Tám Tiền", CardType.phoVawn, 'assets/img/cards/pho_vawn/8.png');
 final Card chinXe = Card(9, "Chín Xe", CardType.phoVawn, 'assets/img/cards/pho_vawn/9.png');
 final Card am = Card(10, "ẦM", CardType.phoVawn, 'assets/img/cards/pho_vawn/10.png');
+
+
+List<Card> listCardSach = [nhatNoc, nhiNgheo, baGa, tuDong, nguDum, sauHot, bayThua, tamDay, chinGoi, doMo];
+List<Card> listCardVan = [nhatTro,nhiBi,tamQuan,tuHuong,nguTrot,lucXo,thatNhon,batBong,cuuThay,thaiTu];
+List<Card> listCardVawn = [bachHue,banhHai,banhBa,tuTuong,namRun,sauTien,thatLieu,tamTien,chinXe,am];
