@@ -61,6 +61,9 @@ flutter:
   assets:
     - assets/img/
     - assets/fonts/
+    - assets/img/cards/pho_van/
+    - assets/img/cards/pho_sach/
+    - assets/img/cards/pho_vawn/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
