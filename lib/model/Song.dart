@@ -1,6 +1,8 @@
+import 'package:bai_choi/model/Card.dart';
+
 class Song{
   late int _id;
-  late String _isCard;
+  late Card _isCard;
   late String _songURL;
 
   int get id => _id;
@@ -9,7 +11,7 @@ class Song{
     _id = value;
   }
 
-  String get isCard => _isCard;
+  Card get isCard => _isCard;
 
   String get songURL => _songURL;
 
@@ -17,7 +19,7 @@ class Song{
     _songURL = value;
   }
 
-  set isCard(String value) {
+  set isCard(Card value) {
     _isCard = value;
   }
 
