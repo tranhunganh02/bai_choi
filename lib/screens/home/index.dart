@@ -93,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
       spaceBetweenChildren: 15,
       foregroundColor: Theme.of(context).colorScheme.onSecondary,
       childrenButtonSize:const Size.fromRadius(30),
+      
       children: [
           SpeedDialChild(
             shape: const CircleBorder(),
