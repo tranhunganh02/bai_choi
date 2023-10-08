@@ -78,7 +78,7 @@ flutter:
   fonts:
     - family: Aviano
       fonts:
-        - asset: assets/fonts/Aviano-Sans-Black.otf
+        - asset: assets/fonts/UTM-Nokia.ttf
           style: italic
     - family: DelaGothicOne
       fonts:
