@@ -1,6 +1,7 @@
 
 import 'package:bai_choi/screens/home/index.dart';
 import 'package:bai_choi/screens/introduction_game/index.dart';
+import 'package:bai_choi/screens/video/index.dart';
 import 'package:flutter/material.dart'; 
 
 const String homeScreen = 'homeScreen';
@@ -19,11 +20,7 @@ const String roomScreen = 'roomScreen';
         return MaterialPageRoute(builder: (context) => const IntroductionScreen());
 
       case roomScreen:
-        return MaterialPageRoute(builder: (context) => const Scaffold(
-          body: Center(
-            child: Text("room"),
-          ),
-        ));
+        return MaterialPageRoute(builder: (context) => const VideoPlayerScreen());
       default:
         return MaterialPageRoute(builder: (BuildContext context) => const HomeScreen());
     }

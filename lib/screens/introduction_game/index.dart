@@ -1,11 +1,7 @@
 import 'package:bai_choi/screens/introduction_game/components/introduce_screen.dart';
-import 'package:bai_choi/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:bai_choi/model/Card.dart';
-
 import 'components/list_card_1.dart';
-import 'components/title_list_card.dart';
 
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({super.key});
