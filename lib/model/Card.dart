@@ -42,10 +42,11 @@ final Card nguDum = Card(5, "Ngũ Đụm", CardType.phoSach, 'assets/img/cards/p
 final Card sauHot = Card(6, "Sáu Hột", CardType.phoSach, 'assets/img/cards/pho_sach/6.png');
 final Card bayThua = Card(7, "Bảy Thưa", CardType.phoSach, 'assets/img/cards/pho_sach/7.png');
 final Card tamDay  = Card(8, "Tám Dầy", CardType.phoSach, 'assets/img/cards/pho_sach/8.png');
-final Card chinGoi = Card(9, "Chín Gối", CardType.phoSach, 'assets/img/cards/pho_sach/9.png');
-final Card doMo = Card(10, "Đỏ Mỏ", CardType.phoSach, 'assets/img/cards/pho_sach/10.png');
+final Card doMo = Card(9, "Đỏ Mỏ", CardType.phoSach, 'assets/img/cards/pho_sach/10.png');
+final Card thaiTu = Card(10, "Thái Tử", CardType.phoSach, 'assets/img/cards/pho_van/10.png');
 
-//Dữ liệu Pho Văn
+
+//Dữ liệu Pho Vạn
 final Card nhatTro = Card(1, "Nhất Trò", CardType.phoVan, 'assets/img/cards/pho_van/1.png');
 final Card nhiBi = Card(2, "Nhì Bí", CardType.phoVan, 'assets/img/cards/pho_van/2.png');
 final Card tamQuan = Card(3, "Tam Quăn", CardType.phoVan, 'assets/img/cards/pho_van/3.png');
@@ -55,10 +56,10 @@ final Card lucXo = Card(6, "Lục Xơ", CardType.phoVan, 'assets/img/cards/pho_v
 final Card thatNhon = Card(7, "Thất Nhọn", CardType.phoVan, 'assets/img/cards/pho_van/7.png');
 final Card batBong = Card(8, "Bát Bồng", CardType.phoVan, 'assets/img/cards/pho_van/8.png');
 final Card cuuThay = Card(9, "Cửu Thầy", CardType.phoVan, 'assets/img/cards/pho_van/9.png');
-final Card thaiTu = Card(10, "Nhất Trò", CardType.phoVan, 'assets/img/cards/pho_van/10.png');
+final Card bachHue = Card(10, "Bách Huê", CardType.phoVan, 'assets/img/cards/pho_vawn/1.png');
 
-//Dữ liệu Pho Vạn
-final Card bachHue = Card(1, "Bách Huê", CardType.phoVawn, 'assets/img/cards/pho_vawn/1.png');
+//Dữ liệu Pho Văn
+final Card chinGoi = Card(1, "Nhất Gối", CardType.phoVawn, 'assets/img/cards/pho_sach/9.png');
 final Card banhHai = Card(2, "Bành Hai", CardType.phoVawn, 'assets/img/cards/pho_vawn/2.png');
 final Card banhBa = Card(3, "Bành Ba", CardType.phoVawn, 'assets/img/cards/pho_vawn/3.png');
 final Card tuTuong = Card(4, "Tứ Tượng", CardType.phoVawn, 'assets/img/cards/pho_vawn/4.png');
@@ -67,7 +68,7 @@ final Card sauTien = Card(6, "Sáu Tiền", CardType.phoVawn, 'assets/img/cards/
 final Card thatLieu = Card(7, "Thất Liễu", CardType.phoVawn, 'assets/img/cards/pho_vawn/7.png');
 final Card tamTien = Card(8, "Tám Tiền", CardType.phoVawn, 'assets/img/cards/pho_vawn/8.png');
 final Card chinXe = Card(9, "Chín Xe", CardType.phoVawn, 'assets/img/cards/pho_vawn/9.png');
-final Card am = Card(10, "ẦM", CardType.phoVawn, 'assets/img/cards/pho_vawn/10.png');
+final Card am = Card(10, "Ông Ầm", CardType.phoVawn, 'assets/img/cards/pho_vawn/10.png');
 
 
 List<Card> listCardSach = [nhatNoc, nhiNgheo, baGa, tuDong, nguDum, sauHot, bayThua, tamDay, chinGoi, doMo];

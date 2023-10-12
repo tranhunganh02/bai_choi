@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:bai_choi/utils/routes.dart' as route;
@@ -21,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: const AssetImage("assets/img/bg_home_1.png"),
+                  image: const AssetImage("assets/img/bg_home.png"),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
                       const Color(0xFFB22A21).withOpacity(0.30),

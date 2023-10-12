@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:bai_choi/theme/color_theme.dart';
+import 'package:bai_choi/viewmodel/SongController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'utils/routes.dart' as route;
@@ -9,6 +12,10 @@ void main() {
     DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight,
   ]);
   runApp(const MyApp());
+
+  SongController songController = SongController();
+  songController.readAssetsFolder();
+
 }
 
 class MyApp extends StatelessWidget {
