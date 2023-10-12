@@ -1,6 +1,11 @@
+import 'dart:async';
+import 'dart:math';
 
+import 'package:bai_choi/screens/test/animation.dart';
+import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:bai_choi/model/Card.dart';
+import 'package:bai_choi/model/Cards.dart';
+
 class RoomScreen extends StatefulWidget {
   const RoomScreen({super.key});
 
@@ -8,11 +13,19 @@ class RoomScreen extends StatefulWidget {
   State<RoomScreen> createState() => _RoomScreenState();
 }
 
-class _RoomScreenState extends State<RoomScreen> {
-  List a = [30, 45, 60];
+class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
   bool _isZoomed = false;
   double radians = 0.0174533;
+  bool _videoInitialized = false;
   late int selectedId;
+
+  
+
+  late VideoPlayerController _videoPlayerController;
+
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
   // ignore: unused_element
   void _selectIndex(int index) {
     setState(() {
@@ -27,65 +40,131 @@ class _RoomScreenState extends State<RoomScreen> {
     });
   }
 
-  // int _currentSeconds = 10;
-  // int _startSeconds = 10;
-  // late Timer _timer;
-
-  // void _startTimer() {
-  //   _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-  //     setState(() {
-  //       if (_currentSeconds > 0) {
-  //         _currentSeconds--;
-  //       } else {
-  //         timer
-  //             .cancel(); // Dừng timer khi đếm ngược về 0 // Thiết lập lại thời gian sau khi đếm ngược về 0
-  //         _currentSeconds = 10;
-  //       }
-  //     });
-  //   });
-  // }
-
   @override
   void dispose() {
+    _videoPlayerController.dispose();
+    _controller.dispose();
     super.dispose();
-    // //_timer.cancel();
-    // _controller.dispose();
-// Dừng timer khi widget bị huỷ
   }
+
+  List<String> videoPaths = [
+    'assets/video/ho1.mp4',
+    'assets/video/ho2.mp4',
+    'assets/video/ho3.mp4',
+  ];
+  int currentVideoIndex = 0;
 
   @override
   void initState() {
+    FadeImageController();
     super.initState();
-    //_startTimer();
-    // _controller = VideoPlayerController.asset("assets/video/ho1.mp4")
-    //   ..initialize().then((_) {
-    //     _controller.play();
-    //     setState(() {});
-    //   });
-    // Initialize the controller and store the Future for later use.
+  }
+
+  // ignore: non_constant_identifier_names
+  void FadeImageController() {
+    _controller = AnimationController(
+      vsync: this,
+      duration:
+          const Duration(seconds: 5), // Độ dài của animation (1 giây ở đây)
+    );
+
+    _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+    _controller.forward().whenComplete(() => VideoController());
+  }
+
+  // ignore: non_constant_identifier_names
+  void VideoController() {
+    _videoPlayerController =
+        VideoPlayerController.asset(videoPaths[currentVideoIndex])
+          ..initialize().then((_) {
+            setState(() {
+              _videoInitialized = true;
+              _videoPlayerController.play();
+              _videoPlayerController.addListener(_videoListener);
+            });
+          });
+  }
+
+  void _videoListener() async {
+    if (_videoPlayerController.value.position >=
+        _videoPlayerController.value.duration) {
+      // Video has finished playing
+      print("het bai $currentVideoIndex");
+      await showModal();
+    }
+  }
+
+  Future<void> showModal() async {
+    // OverlayEntry overlayEntry = OverlayEntry(
+    //   builder: (context) => Center(
+    //     child: Positioned(
+    //       height: 150,
+    //       width: 50,
+    //       //curve: Curves.easeInOut,
+    //       //   child: Container(
+    //       //     height: 100,
+    //       //     width: 40,
+    //       //   child: AnimatedRotationImage(imgURL: listCardVawn[currentVideoIndex].cardURL,)
+    //       // ),
+    //       child: SizedBox(
+    //         height: 150,
+    //         width: 50,
+    //           child: Image.asset(listCardSach[currentVideoIndex].cardURL)),
+    //     ),
+    //   ),
+    // );
+
+    // // Insert the overlay entry
+    // Overlay.of(context).insert(overlayEntry);
+
+    // Delay for a few seconds, then remove the overlay
+    Future.delayed(const Duration(seconds: 5), () {
+      //overlayEntry.remove();
+      playNextVideo();
+    });
+  }
+
+  Future<void> playNextVideo() async {
+    if (currentVideoIndex < videoPaths.length - 1) {
+      currentVideoIndex = currentVideoIndex + 1;
+      _videoPlayerController.pause(); // Pause the current video
+      _videoPlayerController.dispose(); // Dispose the current controller
+      _videoPlayerController =
+          VideoPlayerController.asset(videoPaths[currentVideoIndex])
+            ..initialize().then((_) {
+              setState(() {
+                _videoPlayerController.play();
+                _videoPlayerController.addListener(_videoListener);
+              });
+            });
+    } else {
+      // All videos have been played
+      print('All videos played!');
+      _videoPlayerController.dispose(); // Close the VideoPlayerController
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.background,
+      color: Theme.of(context).colorScheme.primary,
       child: Center(
         child: Stack(
           alignment: Alignment.center,
           children: [
             //top-left
-            AnimatedCardTopLeft(7, 10, -15, 2.79, listCardSach[4].cardURL),
-            AnimatedCardTopLeft(6, -10, 15, 2.35, listCardSach[7].cardURL),
-            AnimatedCardTopLeft(8, -45, 35, 1.92, listCardSach[2].cardURL),
+            // AnimatedCardTopLeft(7, 10, -15, 2.79, listCardSach[4].cardURL),
+            // AnimatedCardTopLeft(6, -10, 15, 2.35, listCardSach[7].cardURL),
+            // AnimatedCardTopLeft(8, -45, 35, 1.92, listCardSach[2].cardURL),
 
-            AnimatedCardTopRight(12, 10, -15, 3.49, listCardVawn[6].cardURL),
-            AnimatedCardTopRight(5, -10, 15, 3.92, listCardSach[8].cardURL),
-            AnimatedCardTopRight(10, -45, 35, 4.36, listCardVan[4].cardURL),
+            // AnimatedCardTopRight(12, 10, -15, 3.49, listCardVawn[6].cardURL),
+            // AnimatedCardTopRight(5, -10, 15, 3.92, listCardSach[8].cardURL),
+            // AnimatedCardTopRight(10, -45, 35, 4.36, listCardVan[4].cardURL),
 
-            //bottom-left
-            AnimatedCardBottomLeft(15, 10, -15, 0.35, listCardVan[1].cardURL),
-            AnimatedCardBottomLeft(3, -10, 15, 0.78, listCardVan[2].cardURL),
-            AnimatedCardBottomLeft(1, -45, 35, 1.22, listCardVan[0].cardURL),
+            // //bottom-left
+            // AnimatedCardBottomLeft(15, 10, -15, 0.35, listCardVan[1].cardURL),
+            // AnimatedCardBottomLeft(3, -10, 15, 0.78, listCardVan[2].cardURL),
+            // AnimatedCardBottomLeft(1, -45, 35, 1.22, listCardVan[0].cardURL),
 
             AnimatedCardBottomRight(20, 10, -15, 5.93, listCardVawn[5].cardURL),
             AnimatedCardBottomRight(1, -10, 15, 5.49, listCardVawn[9].cardURL),
@@ -105,7 +184,14 @@ class _RoomScreenState extends State<RoomScreen> {
                     border: Border.all(color: Colors.yellow, width: 5),
                     color: Theme.of(context).colorScheme.surface,
                   ),
-                  // child: _controller.value.isInitialized
+                  // child: _videoPlayerController.value.isInitialized
+                  child: _videoInitialized
+                      ? AspectRatio(
+                          aspectRatio: _videoPlayerController.value.aspectRatio,
+                          child: VideoPlayer(_videoPlayerController),
+                        )
+                      : Container(),
+                  // child: _videoPlayerController.value.isInitialized
                   //     ? AspectRatio(
                   //         aspectRatio: _controller.value.aspectRatio,
                   //         child: VideoPlayer(_controller),
@@ -118,7 +204,7 @@ class _RoomScreenState extends State<RoomScreen> {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      border: Border.all(color: Colors.black, width: 1)),
+                      border: Border.all(color: Colors.black, width: 0.1)),
                 ),
               ]),
             )
@@ -139,15 +225,8 @@ class _RoomScreenState extends State<RoomScreen> {
       top: _isZoomed && selectedId == index ? 15 : sigX,
       left: _isZoomed && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
-        angle: _isZoomed && selectedId == index ? 0 : angle,
-        child: GestureDetector(
-            onTap: () => _selectIndex(index),
-            child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(imgURL), fit: BoxFit.fill)),
-            )),
-      ),
+          angle: _isZoomed && selectedId == index ? 0 : angle,
+          child: ImageCard(index, imgURL)),
     );
   }
 
@@ -161,15 +240,8 @@ class _RoomScreenState extends State<RoomScreen> {
       bottom: _isZoomed && selectedId == index ? 15 : sigX,
       left: _isZoomed && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
-        angle: _isZoomed && selectedId == index ? 0 : angle,
-        child: GestureDetector(
-            onTap: () => _selectIndex(index),
-            child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(imgURL), fit: BoxFit.fill)),
-            )),
-      ),
+          angle: _isZoomed && selectedId == index ? 0 : angle,
+          child: ImageCard(index, imgURL)),
     );
   }
 
@@ -184,13 +256,7 @@ class _RoomScreenState extends State<RoomScreen> {
       right: _isZoomed && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
         angle: _isZoomed && selectedId == index ? 0 : angle,
-        child: GestureDetector(
-            onTap: () => _selectIndex(index),
-            child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(imgURL), fit: BoxFit.fill)),
-            )),
+        child: ImageCard(index, imgURL),
       ),
     );
   }
@@ -206,15 +272,20 @@ class _RoomScreenState extends State<RoomScreen> {
       bottom: _isZoomed && selectedId == index ? 15 : sigX,
       right: _isZoomed && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
-        angle: _isZoomed && selectedId == index ? 0 : angle,
-        child: GestureDetector(
-            onTap: () => _selectIndex(index),
-            child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(imgURL), fit: BoxFit.fill)),
-            )),
-      ),
+          angle: _isZoomed && selectedId == index ? 0 : angle,
+          child: ImageCard(index, imgURL)),
     );
+  }
+
+  GestureDetector ImageCard(int index, String imgURL) {
+    return GestureDetector(
+        onTap: () => _selectIndex(index),
+        child: FadeTransition(
+          opacity: _animation,
+          child: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage(imgURL))),
+          ),
+        ));
   }
 }

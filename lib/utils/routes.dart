@@ -1,8 +1,10 @@
 
 import 'package:bai_choi/screens/home/index.dart';
 import 'package:bai_choi/screens/introduction_game/index.dart';
-import 'package:bai_choi/screens/test/test.dart';
-import 'package:flutter/material.dart'; 
+//import 'package:bai_choi/screens/test/test.dart';
+import 'package:flutter/material.dart';
+
+import '../screens/test/test.dart'; 
 
 const String homeScreen = 'homeScreen';
 
@@ -20,7 +22,7 @@ const String roomScreen = 'roomScreen';
         return MaterialPageRoute(builder: (context) => const IntroductionScreen());
 
       case roomScreen:
-        return MaterialPageRoute(builder: (context) => const RoomScreen());
+        return MaterialPageRoute(builder: (context) => RoomScreen());
       default:
         return MaterialPageRoute(builder: (BuildContext context) => const HomeScreen());
     }
