@@ -27,7 +27,6 @@ class RoomViewModel extends ChangeNotifier{
     if (randomCards != null) {
       
     } 
-    setLoading(false);
   }
 
 }

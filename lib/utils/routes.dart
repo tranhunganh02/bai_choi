@@ -4,7 +4,7 @@ import 'package:bai_choi/screens/introduction_game/index.dart';
 //import 'package:bai_choi/screens/test/test.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/test/test.dart'; 
+import '../screens/test/test2.dart'; 
 
 const String homeScreen = 'homeScreen';
 
