@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // ignore: non_constant_identifier_names
   GestureDetector Play_button(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, route.roomScreen),
+      onTap: () => Navigator.pushNamed(context, route.chooseModeGame),
       child: const SizedBox(
           height: 80,
           width: 100,
