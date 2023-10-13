@@ -1,9 +1,6 @@
 import 'package:bai_choi/theme/color_theme.dart';
-import 'package:bai_choi/view_models/home_view_model.dart';
-import 'package:bai_choi/view_models/room_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'utils/routes.dart' as route;
 
 void main() {

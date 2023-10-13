@@ -1,28 +1,35 @@
+import 'package:bai_choi/model/Cards.dart';
 import 'package:bai_choi/services/test.dart';
 
 class Player {
   late int _id;
   late String _playerName;
-  late int _score;
+  late List<Cardss> _cards;
 
-  late Card _card;
-
-  get card => _card;
-
-  get getScore => _score;
-
- set setScore(score) => _score = score;
-
-  set card(value) => _card = value;
-  int get id => _id;
-
-  set id(int value) {
-    _id = value;
+  int get id {
+    return _id;
+  }
+  set id(int id) {
+    _id = id;
+  }
+  String get playerName {
+    return _playerName;
+  }
+  set playerName(String name) {
+    _playerName = name;
+  }
+  List<Cardss> get card {
+    return _cards;
   }
 
-  String get playerName => _playerName;
+  set card(List<Cardss> cards) {
+    _cards = cards;
+  }
 
-  set playerName(String value) {
-    _playerName = value;
+  // ignore: non_constant_identifier_names
+  Player(int id, String playerName, List<Cardss> cards) {
+    _id = id;
+    _playerName = playerName;
+    [_cards = cards];
   }
 }

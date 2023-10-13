@@ -103,18 +103,4 @@ List<Card> getRandomCardsWithTypes(List<CardType> cardTypes, int numCards) {
     randomCards.add(randomCard);
   }
   return randomCards;
-  randomCards.clear();
-}
-
-void main() {
-  List<CardType> cardTypes = [CardType.phoSach, CardType.phoVan, CardType.phoVawn];
-  List<Card> randomCards = getRandomCardsWithTypes(cardTypes, 3);
-
-  for (var card in randomCards) {
-    print('Card ID: ${card.id}');
-    print('Card Name: ${card.cardName}');
-    print('Card Type: ${card.cardType}');
-    print('Card URL: ${card.cardURL}');
-    print('\n');
-  }
 }

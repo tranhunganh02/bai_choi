@@ -20,7 +20,7 @@ class _PositionCardState extends State<PositionCard>
   bool _isZoomed = false;
 //   double radians = 0.0174533;
 //   bool _videoInitialized = false;
-  late int selectedId;
+  late int selectedId = -1;
   @override
   void initState() {
     FadeImageController();
@@ -28,16 +28,25 @@ class _PositionCardState extends State<PositionCard>
   }
 
   void _selectIndex(int index) {
-    setState(() {
+   if (index!= selectedId) {
+      setState(() {
+      _isZoomed = !_isZoomed;  
       selectedId = index;
+      print("select ${selectedId} ");
     });
-    _toggleZoom();
+   }
+   else{
+             print("select ${index} ");
+       _toggleZoom();
+   }
+ 
   }
 
   void _toggleZoom() {
     setState(() {
       _isZoomed = !_isZoomed;
     });
+    print("trang thai ${_isZoomed}");
   }
 
   // ignore: non_constant_identifier_names
@@ -50,6 +59,13 @@ class _PositionCardState extends State<PositionCard>
 
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
     _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -70,12 +86,12 @@ class _PositionCardState extends State<PositionCard>
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 950),
       curve: Curves.easeInOut,
-      height: _isZoomed && selectedId == index ? 210 : 125,
-      width: _isZoomed && selectedId == index ? 90 : 55,
-      top: _isZoomed && selectedId == index ? 15 : sigX,
-      left: _isZoomed && selectedId == index ? 150 : sigY,
+      height: _isZoomed==true && selectedId == index ? 195 : 125,
+      width: _isZoomed==true && selectedId == index ? 90 : 55,
+      top: _isZoomed==true && selectedId == index ? 15 : sigX,
+      left: _isZoomed==true && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
-          angle: _isZoomed && selectedId == index ? 0 : angle,
+          angle: _isZoomed==true && selectedId == index ? 0 : angle,
           child: ImageCard(index, imgURL)),
     );
   }
@@ -85,12 +101,12 @@ class _PositionCardState extends State<PositionCard>
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 950),
       curve: Curves.easeInOut,
-      height: _isZoomed && selectedId == index ? 210 : 125,
-      width: _isZoomed && selectedId == index ? 90 : 55,
-      bottom: _isZoomed && selectedId == index ? 15 : sigX,
-      left: _isZoomed && selectedId == index ? 150 : sigY,
+      height: _isZoomed==true && selectedId == index ? 195 : 125,
+      width: _isZoomed==true && selectedId == index ? 90 : 55,
+      bottom: _isZoomed==true && selectedId == index ? 39 : sigX,
+      left: _isZoomed==true && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
-          angle: _isZoomed && selectedId == index ? 0 : angle,
+          angle: _isZoomed==true && selectedId == index ? 0 : angle,
           child: ImageCard(index, imgURL)),
     );
   }
@@ -100,7 +116,7 @@ class _PositionCardState extends State<PositionCard>
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 950),
       curve: Curves.easeInOut,
-      height: _isZoomed && selectedId == index ? 210 : 125,
+      height: _isZoomed && selectedId == index ? 195 : 125,
       width: _isZoomed && selectedId == index ? 90 : 55,
       top: _isZoomed && selectedId == index ? 15 : sigX,
       right: _isZoomed && selectedId == index ? 150 : sigY,
@@ -117,9 +133,9 @@ class _PositionCardState extends State<PositionCard>
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 950),
       curve: Curves.easeInOut,
-      height: _isZoomed && selectedId == index ? 210 : 125,
+      height: _isZoomed && selectedId == index ? 195 : 125,
       width: _isZoomed && selectedId == index ? 90 : 55,
-      bottom: _isZoomed && selectedId == index ? 15 : sigX,
+      bottom: _isZoomed && selectedId == index ? 39 : sigX,
       right: _isZoomed && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
           angle: _isZoomed && selectedId == index ? 0 : angle,

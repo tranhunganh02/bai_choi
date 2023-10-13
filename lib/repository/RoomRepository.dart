@@ -2,7 +2,7 @@
 import 'package:bai_choi/model/CardType.dart';
 import 'package:bai_choi/model/Cards.dart';
 
-import '../services/RoomServices.dart';
+import '../services/ModeGameServices.dart';
 
 // ignore: camel_case_types
 abstract class RoomRepository{
@@ -13,7 +13,7 @@ abstract class RoomRepository{
 // ignore: camel_case_types
 class RoomRepositoryImp extends RoomRepository {
 
-    RoomServices RS = RoomServices();
+    ModeGameServices RS = ModeGameServices();
 
   @override
   Future<Cardss> getRandomCardsWithTypes(int numCards) {
