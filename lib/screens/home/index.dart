@@ -1,7 +1,8 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:bai_choi/utils/routes.dart' as route;
-import 'package:bai_choi/constaint.dart';
+import 'package:bai_choi/Constaint.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,6 +14,36 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool mute = true;
 
+  final player = AudioPlayer();
+  
+  Future<void> playAudioFromFile() async {
+    await player.play(AssetSource("audio/intro.mp3"));
+  }
+
+  Future<void>turnOffVolumne() async{
+
+    if (mute) {
+      await player.setVolume(0);
+    }else{
+     await player.setVolume(1);
+    }
+      mute = !mute;       
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    playAudioFromFile();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    player.dispose();
+    super.dispose();
+
+  }
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -129,8 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: const CircleBorder(),
             onTap: () {
               setState(() {
-                mute = !mute;
-                print(mute);
+                turnOffVolumne();
               });
             },
             child: mute == true

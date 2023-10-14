@@ -1,4 +1,4 @@
-import 'package:bai_choi/model/Card.dart';
+import 'package:bai_choi/model/Cards.dart';
 import 'package:bai_choi/screens/introduction_game/components/card.dart';
 import 'package:flutter/material.dart';
 
