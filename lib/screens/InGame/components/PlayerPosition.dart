@@ -142,7 +142,21 @@ class _PlayerPositionState extends State<PlayerPosition> {
               imgURl: widget.player.card[2].cardURL,
               indexCard: widget.player.card[2].id,
               sigX: -45,
-              sigY: 35)
+              sigY: 35),
+          Positioned(
+            height: 25,
+            width: 50,
+            top: 12,
+            right: 170,
+            child: DefaultTextStyle(
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+              ),
+              child: Text(widget.player.playerName, maxLines: 1),
+            ),
+          )
         ],
       );
     }
@@ -174,7 +188,21 @@ class _PlayerPositionState extends State<PlayerPosition> {
               imgURl: widget.player.card[2].cardURL,
               indexCard: widget.player.card[2].id,
               sigX: -45,
-              sigY: 35)
+              sigY: 35),
+          Positioned(
+            height: 25,
+            width: 50,
+            top: 12,
+            left: 170,
+            child: DefaultTextStyle(
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+              ),
+              child: Text(widget.player.playerName, maxLines: 1),
+            ),
+          )
         ],
       );
     } else

@@ -88,7 +88,7 @@ class _PositionCardState extends State<PositionCard>
       curve: Curves.easeInOut,
       height: _isZoomed==true && selectedId == index ? 195 : 125,
       width: _isZoomed==true && selectedId == index ? 90 : 55,
-      top: _isZoomed==true && selectedId == index ? 15 : sigX,
+      top: _isZoomed==true && selectedId == index ? 40 : sigX,
       left: _isZoomed==true && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
           angle: _isZoomed==true && selectedId == index ? 0 : angle,
@@ -103,7 +103,7 @@ class _PositionCardState extends State<PositionCard>
       curve: Curves.easeInOut,
       height: _isZoomed==true && selectedId == index ? 195 : 125,
       width: _isZoomed==true && selectedId == index ? 90 : 55,
-      bottom: _isZoomed==true && selectedId == index ? 39 : sigX,
+      bottom: _isZoomed==true && selectedId == index ? 40 : sigX,
       left: _isZoomed==true && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
           angle: _isZoomed==true && selectedId == index ? 0 : angle,
@@ -118,7 +118,7 @@ class _PositionCardState extends State<PositionCard>
       curve: Curves.easeInOut,
       height: _isZoomed && selectedId == index ? 195 : 125,
       width: _isZoomed && selectedId == index ? 90 : 55,
-      top: _isZoomed && selectedId == index ? 15 : sigX,
+      top: _isZoomed && selectedId == index ? 40 : sigX,
       right: _isZoomed && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
         angle: _isZoomed && selectedId == index ? 0 : angle,
@@ -135,7 +135,7 @@ class _PositionCardState extends State<PositionCard>
       curve: Curves.easeInOut,
       height: _isZoomed && selectedId == index ? 195 : 125,
       width: _isZoomed && selectedId == index ? 90 : 55,
-      bottom: _isZoomed && selectedId == index ? 39 : sigX,
+      bottom: _isZoomed && selectedId == index ? 40 : sigX,
       right: _isZoomed && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
           angle: _isZoomed && selectedId == index ? 0 : angle,
