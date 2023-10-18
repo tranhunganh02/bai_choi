@@ -18,7 +18,7 @@ class RoomRepositoryImp extends RoomRepository {
   @override
   Future<Cardss> getRandomCardsWithTypes(int numCards) {
     // TODO: implement getRandomCardsWithTypes
-    RS.getRandomCardsWithTypes(numCards);
+    // RS.getRandomCardsWithTypes(numCards);
     throw UnimplementedError();
   }
 

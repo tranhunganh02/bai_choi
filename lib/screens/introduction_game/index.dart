@@ -56,7 +56,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
         body: TabBarView(
           children: [
             IntroduceScreen(context),
-            Icon(Icons.directions_transit),
+            const Icon(Icons.directions_transit),
             ListCard()
           ],
         ),

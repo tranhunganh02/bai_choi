@@ -37,6 +37,7 @@ dependencies:
   video_player: ^2.7.0
   transparent_image: ^2.0.1
   provider: ^6.0.5
+  logger: ^2.0.2+1
 
 dev_dependencies:
   flutter_test:
@@ -59,7 +60,32 @@ flutter:
     - assets/audio/
     - assets/img/
     - assets/fonts/
-    - assets/video/
+    - assets/videos/
+    - assets/videos/am/
+    - assets/videos/ba_ga/
+    - assets/videos/bach_tuyet/
+    - assets/videos/banh_ba/
+    - assets/videos/banh_hai/
+    - assets/videos/bat_bong/
+    - assets/videos/bay_day/
+    - assets/videos/chin_goi/
+    - assets/videos/cuu_chua/
+    - assets/videos/do_mo/
+    - assets/videos/intro/
+    - assets/videos/luc_xo/
+    - assets/videos/nam_run/
+    - assets/videos/ngu_dum/
+    - assets/videos/nhat_noc/
+    - assets/videos/nhi_bi/
+    - assets/videos/nhi_ngheo/
+    - assets/videos/nhut_tro/
+    - assets/videos/outro/
+    - assets/videos/sau_hot/
+    - assets/videos/sau_tien/
+    - assets/videos/tam_day/
+    - assets/videos/tam_quan/
+    - assets/videos/tam_tien/
+    - assets/videos/tu_dong/
     - assets/img/cards/pho_van/
     - assets/img/cards/pho_sach/
     - assets/img/cards/pho_vawn/

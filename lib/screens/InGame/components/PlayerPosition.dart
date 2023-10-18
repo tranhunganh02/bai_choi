@@ -1,5 +1,5 @@
 import 'package:bai_choi/model/Player.dart';
-import 'package:bai_choi/screens/test/components/PositionCard.dart';
+import 'package:bai_choi/screens/InGame/components/PositionCard.dart';
 import 'package:flutter/material.dart';
 
 class PlayerPosition extends StatefulWidget {
@@ -25,9 +25,14 @@ class _PlayerPositionState extends State<PlayerPosition> {
     setState(() {
       _isZoomed = !_isZoomed;
     });
-    print("trang thai ${_isZoomed}");
+    print("trang thai $_isZoomed");
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     if (widget.player.id == 1) {
@@ -62,7 +67,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
             left: 170,
             child: DefaultTextStyle(
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 15,
               ),
@@ -104,7 +109,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
             right: 170,
             child: DefaultTextStyle(
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 15,
               ),
@@ -150,7 +155,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
             right: 170,
             child: DefaultTextStyle(
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 15,
               ),
@@ -196,7 +201,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
             left: 170,
             child: DefaultTextStyle(
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 15,
               ),
@@ -205,7 +210,8 @@ class _PlayerPositionState extends State<PlayerPosition> {
           )
         ],
       );
-    } else
+    } else {
       return Container();
+    }
   }
 }

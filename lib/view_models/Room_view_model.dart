@@ -22,7 +22,7 @@ class RoomViewModel extends ChangeNotifier{
   List<Cardss> randomCards = [];
   getRandomCardsWithTypes(int number) async {
     setLoading(true);
-    randomCards = await ModeGameServices().getRandomCardsWithTypes(number);
+    // randomCards = await ModeGameServices().getRandomCardsWithTypes(number);
     // ignore: unnecessary_null_comparison
     if (randomCards != null) {
       
