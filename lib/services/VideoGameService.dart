@@ -21,14 +21,14 @@ class VideoGameServices {
     List<List<Song>> songLists = LS.getAllSongList();
     logger.e("SongListLenght: ${songLists.length}");
     List<List<Song>> randomSongList = [];
-    // randomSongList.add(intro);
+    randomSongList.add(introList);
 
     for (int i = 0; i < maxRound; i++) {
       int randomIndex = random.nextInt(songLists.length);
       randomSongList.add(songLists.removeAt(randomIndex));
     }
 
-    // randomSongList.add(outro);
+    randomSongList.add(outroList);
     logger.i(randomSongList.length);
 
     return randomSongList;
@@ -44,7 +44,7 @@ class VideoGameServices {
     return songList;
   }
 
-  int isMatchCard(Cardss card, List<Player> players) {
+  int isMatchCard(Cardss? card, List<Player> players) {
     for (var player in players) {
       if (player.cards.contains(card)) {
         return player.id;
@@ -73,8 +73,10 @@ class VideoGameServices {
 
     if (countMax == 1 || maxScore == 3) {
       return scoreList.indexOf(maxScore);
+    }else{
+      print("Đã return -1");
+      return -1;
     }
-    return -1;
   }
 
 

@@ -2,7 +2,7 @@ import 'package:bai_choi/model/Cards.dart';
 
 class Song {
   late int _id;
-  late Cardss _isCard;
+  late Cardss? _isCard;
   late String _songURL;
 
   int get id => _id;
@@ -11,7 +11,7 @@ class Song {
     _id = value;
   }
 
-  Cardss get isCard => _isCard;
+  Cardss? get isCard => _isCard;
 
   String get songURL => _songURL;
 
@@ -19,7 +19,7 @@ class Song {
     _songURL = value;
   }
 
-  set isCard(Cardss value) {
+  set isCard(Cardss? value) {
     _isCard = value;
   }
 
@@ -106,16 +106,16 @@ final List<Song> tamTienList = [
 final List<Song> tuDongList = [
   Song(1, tuDong, 'assets/videos/tu_dong/01.mp4'),
 ];
-final List<Song> intro = [
-  Song.notCard(1, 'assets/videos/intro/01.mp4'),
-  Song.notCard(2, 'assets/videos/intro/02.mp4'),
-  Song.notCard(3, 'assets/videos/intro/03.mp4'),
-  Song.notCard(4, 'assets/videos/intro/04.mp4'),
-  Song.notCard(5, 'assets/videos/intro/05.mp4'),
+final List<Song> introList = [
+  // Song.notCard(1, 'assets/videos/intro/01.mp4'),
+  Song(2, intro,'assets/videos/intro/02.mp4'),
+  Song(3, intro, 'assets/videos/intro/03.mp4'),
+  Song(4, intro,'assets/videos/intro/04.mp4'),
+  Song(5, intro,'assets/videos/intro/05.mp4'),
 ];
-final List<Song> outro = [
-  Song.notCard(1, 'assets/videos/outro/01.mp4'),
-  Song.notCard(2, 'assets/videos/outro/02.mp4'),
+final List<Song> outroList = [
+  Song(1, intro,'assets/videos/outro/01.mp4'),
+  Song(2, intro,'assets/videos/outro/02.mp4'),
 ];
 final List<List<Song>> allSongList = [
   amList,

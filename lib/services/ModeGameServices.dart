@@ -18,9 +18,6 @@ class ModeGameServices {
 
   Cardss getRandomCardByType(CardType cardType, List<Cardss> phoSachList,
       List<Cardss> phoVanList, List<Cardss> phoVawnList) {
-    // List<Cardss> phoSachList = LS.getPhoSachList();
-    // List<Cardss> phoVanList = LS.getPhoVanList();
-    // List<Cardss> phoVawnList = LS.getPhoVawnList();
     List<Cardss> cardList = [];
     switch (cardType) {
       case CardType.phoSach:
@@ -31,6 +28,8 @@ class ModeGameServices {
         break;
       case CardType.phoVawn:
         cardList = phoVawnList;
+        break;
+      case CardType.NotCard:
         break;
     }
     int randomIndex = Random().nextInt(cardList.length);

@@ -24,6 +24,7 @@ class RoomScreen extends StatefulWidget {
 }
 
 class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
+  late int matchResult;
   bool getData = false;
   ModeGameServices RS = ModeGameServices();
   VideoGameServices VGS = VideoGameServices();
@@ -38,7 +39,6 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
     });
   }
 
-  // Add new image to list result
   Future<void> addNewImage(String imgURL) async {
     Timer(const Duration(seconds: 1), () {
       setState(() {
@@ -88,7 +88,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                   height: 100,
                   width: 40,
                   child: song.isCard != null
-                      ? Image.asset(song.isCard.cardURL)
+                      ? Image.asset(song.isCard!.cardURL)
                       : Container(),
                 ),
               ),
@@ -101,7 +101,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
     Future.delayed(const Duration(seconds: 5), () {
       overlayEntry.remove();
       // playNextVideo();
-    }).then((value) => {addNewImage(song.isCard.cardURL)});
+    }).then((value) => {addNewImage(song.isCard!.cardURL)});
   }
 
   void logScore(List<Player> players) {
@@ -135,7 +135,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                     _controller.play();
                     try {
                       logger.i(
-                          "Playing ${widget.gameMatch.songs.first.isCard.cardssName}");
+                          "Playing ${widget.gameMatch.songs.first.isCard?.cardssName}");
                     } catch (e) {}
                   });
                 });
@@ -145,10 +145,12 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
         logger.i('All videos played');
 
         // Kiểm tra điều kiện thắng
-        int matchResult = VGS.checkWinCondition(players);
+        matchResult = VGS.checkWinCondition(players);
         if (matchResult != -1) {
           //showMatchResult(players[matchResult], 1);
           showMatchResult(players[matchResult], 1, context);
+        }else{
+          showMatchResult(players[0], -1, context);
         }
       }
     }
@@ -195,17 +197,17 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
         bool confirmExit = await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title:const Text('Xác nhận thoát'),
-            content:const Text('Bạn có chắc muốn thoát khỏi ứng dụng?'),
+            title: const Text('Xác nhận thoát'),
+            content: const Text('Bạn có chắc muốn thoát khỏi ứng dụng?'),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child:const Text('Không'),
+                child: const Text('Không'),
               ),
               TextButton(
                 onPressed: () =>
                     Navigator.popUntil(context, (route) => route.isFirst),
-                child:const Text('Có'),
+                child: const Text('Có'),
               ),
             ],
           ),
@@ -244,22 +246,43 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                             ),
                           ),
                           Positioned(
-                            height: 15,
-                            width: 15,
                             left: 10,
-                            bottom: 20,
+                            bottom: 0,
                             child: IconButton(
-                                onPressed: () {}, icon:const Icon(Icons.play_arrow)),
+                              onPressed: () {
+                                setState(() {
+                                  if (_controller.value.isPlaying) {
+                                    _controller.pause();
+                                  } else {
+                                    _controller.play();
+                                  }
+                                });
+                              },
+                              icon: Icon(_controller.value.isPlaying
+                                  ? Icons.pause
+                                  : Icons.play_arrow),
+                              color: Colors.white,
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStatePropertyAll(Colors.red.withOpacity(0.75))
+                              ),
+                            ),
                           ),
                           Positioned(
-                            height: 15,
-                            width: 15,
-                            right: 30,
-                            bottom: 20,
+                            right: 10,
+                            bottom: 0,
                             child: SizedBox(
                               child: IconButton(
-                                  onPressed: () {},
-                                  icon:const Icon(Icons.skip_next)),
+                                onPressed: () {
+                                  _controller.seekTo(_controller.value.duration - const Duration(seconds: 6));
+                                },
+                                icon: const Icon(Icons.skip_next),
+                                color: Colors.white,
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                    MaterialStatePropertyAll(Colors.red.withOpacity(0.75))
+                                ),
+                              ),
                             ),
                           )
                         ],
@@ -277,7 +300,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                   itemCount: newURL.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      margin: EdgeInsets.all(5.0),
+                      margin: const EdgeInsets.all(5.0),
                       height: 100,
                       width: 35,
                       child: Image.asset(
@@ -294,7 +317,6 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
           PlayerPosition(player: widget.gameMatch.players[1]),
           PlayerPosition(player: widget.gameMatch.players[2]),
           PlayerPosition(player: widget.gameMatch.players[3]),
-          
         ])
             //       : Center(
             //           child: TextButton(

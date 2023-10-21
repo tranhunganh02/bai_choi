@@ -70,7 +70,7 @@ final Cardss chinXe = Cardss(9, "Chín Xe", CardType.phoVawn, 'assets/img/cards/
 final Cardss am = Cardss(10, "Ông Ầm", CardType.phoVawn, 'assets/img/cards/pho_vawn/10.png');
 
 // Intro
-// final Cardss intro = Cardss(1, "Intro", CardType.phoVawn, 'assets/img/cards/pho_vawn/10.png');
+final Cardss intro = Cardss(1, "Intro", CardType.NotCard, 'assets/img/no_background.png');
 
 List<Cardss> listCardSach = [nhatNoc, nhiNgheo, baGa, tuDong, nguDum, sauHot, bayThua, tamDay, chinGoi, doMo];
 List<Cardss> listCardVan = [nhatTro,nhiBi,tamQuan,tuHuong,nguTrot,lucXo,thatNhon,batBong,cuuThay,thaiTu];

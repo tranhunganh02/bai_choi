@@ -71,7 +71,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
                 color: Colors.black,
                 fontSize: 15,
               ),
-              child: Text(widget.player.playerName, maxLines: 1),
+              child: Text(widget.player.playerName, maxLines: 1, style: const TextStyle(color: Colors.white, fontFamily: 'Aviano'),),
             ),
           )
         ],
@@ -113,7 +113,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
                 color: Colors.black,
                 fontSize: 15,
               ),
-              child: Text(widget.player.playerName),
+              child: Text(widget.player.playerName, style: TextStyle(color: Colors.white, fontFamily: 'Aviano'),),
             ),
           )
           
@@ -159,7 +159,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
                 color: Colors.black,
                 fontSize: 15,
               ),
-              child: Text(widget.player.playerName, maxLines: 1),
+              child: Text(widget.player.playerName, maxLines: 1, style: TextStyle(color: Colors.white, fontFamily: 'Aviano'),),
             ),
           )
         ],
@@ -205,7 +205,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
                 color: Colors.black,
                 fontSize: 15,
               ),
-              child: Text(widget.player.playerName, maxLines: 1),
+              child: Text(widget.player.playerName, maxLines: 1, style: TextStyle(color: Colors.white, fontFamily: 'Aviano'),),
             ),
           )
         ],
