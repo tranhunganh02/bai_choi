@@ -154,7 +154,9 @@ class _EnterPlayerScreenState extends State<EnterPlayerScreen> {
                 width: 250,
                 child: TextField(
                   controller: playerName1,
+                  focusNode: FocusNode(),
                   style: const TextStyle(
+                    
                       color: Colors.white, fontFamily: 'Aviano', fontSize: 10),
                   decoration: InputDecoration(
                     errorBorder: const UnderlineInputBorder(),
@@ -164,6 +166,7 @@ class _EnterPlayerScreenState extends State<EnterPlayerScreen> {
                     enabled: true,
                     fillColor: Colors.white,
                     labelText: 'Nhập tên người chơi 1',
+                    
                     border: const OutlineInputBorder(),
                     labelStyle: const TextStyle(
                         color: Color(0xFFFDB813),

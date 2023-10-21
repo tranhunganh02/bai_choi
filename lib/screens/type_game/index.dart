@@ -17,6 +17,7 @@ class _ChooseTypeGameState extends State<ChooseTypeGame> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xFFB22A21),
+        
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

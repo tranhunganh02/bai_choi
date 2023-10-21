@@ -21,14 +21,14 @@ class VideoGameServices {
     List<List<Song>> songLists = LS.getAllSongList();
     logger.e("SongListLenght: ${songLists.length}");
     List<List<Song>> randomSongList = [];
-    randomSongList.add(intro);
+    // randomSongList.add(intro);
 
     for (int i = 0; i < maxRound; i++) {
       int randomIndex = random.nextInt(songLists.length);
       randomSongList.add(songLists.removeAt(randomIndex));
     }
 
-    randomSongList.add(outro);
+    // randomSongList.add(outro);
     logger.i(randomSongList.length);
 
     return randomSongList;

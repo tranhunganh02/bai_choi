@@ -27,7 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
     }else{
      await player.setVolume(1);
     }
-      mute = !mute;       
+    setState(() {
+      
+      mute = !mute;      
+    }); 
   }
 
   @override
@@ -122,7 +125,10 @@ class _HomeScreenState extends State<HomeScreen> {
   // ignore: non_constant_identifier_names
   GestureDetector Play_button(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, route.modeGameScreen),
+      onTap: () {
+        player.pause();
+        Navigator.pushNamed(context, route.modeGameScreen);
+      },
       child: const SizedBox(
           height: 80,
           width: 100,
@@ -163,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 turnOffVolumne();
               });
             },
-            child: mute == true
+            child: mute
                 ? const Icon(Icons.volume_mute)
                 : const Icon(Icons.volume_off))
       ],

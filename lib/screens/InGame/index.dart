@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:bai_choi/model/GameMatch.dart';
 import 'package:bai_choi/screens/InGame/components/PlayerPosition.dart';
+import 'package:bai_choi/screens/InGame/components/ResultGame.dart';
 import 'package:bai_choi/services/ModeGameServices.dart';
 import 'package:bai_choi/services/VideoGameService.dart';
 import 'package:flutter/material.dart';
@@ -84,11 +85,11 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                 curve: Curves.easeInOut,
                 duration: const Duration(seconds: 2),
                 child: Container(
-                    height: 100,
-                    width: 40,
-                    child: song.isCard != null
-                        ? Image.asset(song.isCard.cardURL)
-                        : Container(),
+                  height: 100,
+                  width: 40,
+                  child: song.isCard != null
+                      ? Image.asset(song.isCard.cardURL)
+                      : Container(),
                 ),
               ),
             ));
@@ -146,37 +147,38 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
         // Kiểm tra điều kiện thắng
         int matchResult = VGS.checkWinCondition(players);
         if (matchResult != -1) {
-          showMatchResult(players[matchResult], 1);
+          //showMatchResult(players[matchResult], 1);
+          showMatchResult(players[matchResult], 1, context);
         }
       }
     }
   }
 
-  void showMatchResult(Player player, int flagResult) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          if (flagResult != -1) {
-            return AlertDialog(
-              title: Text("Kết quả"),
-              content: Text("${player.playerName} chiến thắng"),
-              actions: [
-                TextButton(onPressed: () {}, child: Text("Về màn hình chính")),
-                TextButton(onPressed: () {}, child: Text("Chơi lại"))
-              ],
-            );
-          } else {
-            return AlertDialog(
-              title: Text("Kết quả"),
-              content: Text("Hòa"),
-              actions: [
-                TextButton(onPressed: () {}, child: Text("Về màn hình chính")),
-                TextButton(onPressed: () {}, child: Text("Chơi lại"))
-              ],
-            );
-          }
-        });
-  }
+  // void showMatchResult(Player player, int flagResult) {
+  //   showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         if (flagResult != -1) {
+  //           return AlertDialog(
+  //             title: Text("Kết quả"),
+  //             content: Text("${player.playerName} chiến thắng"),
+  //             actions: [
+  //               TextButton(onPressed: () {}, child: Text("Về màn hình chính")),
+  //               TextButton(onPressed: () {}, child: Text("Chơi lại"))
+  //             ],
+  //           );
+  //         } else {
+  //           return AlertDialog(
+  //             title: Text("Kết quả"),
+  //             content: Text("Hòa"),
+  //             actions: [
+  //               TextButton(onPressed: () {}, child: Text("Về màn hình chính")),
+  //               TextButton(onPressed: () {}, child: Text("Chơi lại"))
+  //             ],
+  //           );
+  //         }
+  //       });
+  // }
 
   @override
   void dispose() {
@@ -190,24 +192,25 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-         bool confirmExit = await showDialog(
+        bool confirmExit = await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Xác nhận thoát'),
-            content: Text('Bạn có chắc muốn thoát khỏi ứng dụng?'),
+            title:const Text('Xác nhận thoát'),
+            content:const Text('Bạn có chắc muốn thoát khỏi ứng dụng?'),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child: Text('Không'),
+                child:const Text('Không'),
               ),
               TextButton(
-                onPressed: () => Navigator.popUntil(context, (route) => route.isFirst),
-                child: Text('Có'),
+                onPressed: () =>
+                    Navigator.popUntil(context, (route) => route.isFirst),
+                child:const Text('Có'),
               ),
             ],
           ),
         );
-         return confirmExit ?? false;
+        return confirmExit ?? false;
       },
       child: Container(
         color: Theme.of(context).colorScheme.primary,
@@ -230,29 +233,33 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                 // child: _controller.value.isInitialized
                 child: _controller.value.isInitialized
                     ? Stack(
-                  alignment: Alignment.center,
+                        alignment: Alignment.center,
                         children: [
-                          Positioned(
+                          SizedBox(
+                            height: double.infinity,
+                            width: double.infinity,
                             child: AspectRatio(
                               aspectRatio: _controller.value.aspectRatio,
                               child: VideoPlayer(_controller),
                             ),
                           ),
                           Positioned(
-
-                            left: 0,
-                            bottom: 0,
-                            child: SizedBox(
-                              child: IconButton(
-                                  onPressed: () {}, icon: Icon(Icons.play_arrow)),
-                            ),
+                            height: 15,
+                            width: 15,
+                            left: 10,
+                            bottom: 20,
+                            child: IconButton(
+                                onPressed: () {}, icon:const Icon(Icons.play_arrow)),
                           ),
                           Positioned(
-                            right: 0,
-                            bottom: 0,
+                            height: 15,
+                            width: 15,
+                            right: 30,
+                            bottom: 20,
                             child: SizedBox(
                               child: IconButton(
-                                  onPressed: () {}, icon: Icon(Icons.skip_next)),
+                                  onPressed: () {},
+                                  icon:const Icon(Icons.skip_next)),
                             ),
                           )
                         ],
@@ -287,7 +294,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
           PlayerPosition(player: widget.gameMatch.players[1]),
           PlayerPosition(player: widget.gameMatch.players[2]),
           PlayerPosition(player: widget.gameMatch.players[3]),
-          //PositionCard(type: listCard.[1]., angle: angle, imgURl: imgURl, indexCard: indexCard, sigX: sigX, sigY: sigY)
+          
         ])
             //       : Center(
             //           child: TextButton(
