@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:bai_choi/utils/routes.dart' as route;
 import 'package:bai_choi/Constaint.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,22 +16,25 @@ class _HomeScreenState extends State<HomeScreen> {
   bool mute = true;
 
   final player = AudioPlayer();
-  
+
   Future<void> playAudioFromFile() async {
     await player.play(AssetSource("audio/intro.mp3"));
   }
 
-  Future<void>turnOffVolumne() async{
+  void saveImageUrls(List<String> imageUrls) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('imageUrls', imageUrls);
+  }
 
+  Future<void> turnOffVolumne() async {
     if (mute) {
       await player.setVolume(0);
-    }else{
-     await player.setVolume(1);
+    } else {
+      await player.setVolume(1);
     }
     setState(() {
-      
-      mute = !mute;      
-    }); 
+      mute = !mute;
+    });
   }
 
   @override
@@ -45,8 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement dispose
     player.dispose();
     super.dispose();
-
   }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -126,7 +130,8 @@ class _HomeScreenState extends State<HomeScreen> {
   GestureDetector Play_button(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        player.pause();
+        // player.pause();
+        // Navigator.pushNamed(context, route.modeGameScreen);
         Navigator.pushNamed(context, route.modeGameScreen);
       },
       child: const SizedBox(
@@ -153,6 +158,15 @@ class _HomeScreenState extends State<HomeScreen> {
       foregroundColor: Theme.of(context).colorScheme.onSecondary,
       childrenButtonSize: const Size.fromRadius(30),
       children: [
+         SpeedDialChild(
+            shape: const CircleBorder(),
+            label: "Phần quà của bạn",
+            onTap: () {
+              Navigator.pushNamed(context, route.itemPlayerScreen);
+            },
+            child: const Icon(
+              Icons.card_giftcard_sharp,
+            )),
         SpeedDialChild(
             shape: const CircleBorder(),
             label: "Giới thiệu game",
@@ -171,7 +185,8 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: mute
                 ? const Icon(Icons.volume_mute)
-                : const Icon(Icons.volume_off))
+                : const Icon(Icons.volume_off)),
+       
       ],
     );
   }

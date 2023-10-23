@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bai_choi/utils/routes.dart' as route;
+import 'package:logger/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ChooseModeGame extends StatefulWidget {
   const ChooseModeGame({super.key});
@@ -11,6 +13,7 @@ class ChooseModeGame extends StatefulWidget {
 class _ChooseModeGameState extends State<ChooseModeGame> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         backgroundColor: const Color(0xFFB22A21),
         body: Padding(
@@ -22,14 +25,14 @@ class _ChooseModeGameState extends State<ChooseModeGame> {
               FloatingActionButton(
                 onPressed: () => Navigator.pop(context),
                 child: const Icon(Icons.arrow_back),
-                
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
                       child: Text("Chọn mode chơi",
                           style: TextStyle(
                               fontFamily: "DelaGothicOne",
@@ -46,17 +49,20 @@ class _ChooseModeGameState extends State<ChooseModeGame> {
                     Column(
                       children: [
                         ElevatedButton(
-                          onPressed: () =>
-                              Navigator.pushNamed(context, route.typeGameScreen),
+                          onPressed: () async {
+                            Navigator.pushNamed(context, route.typeGameScreen);
+                          },
+                          //
+
                           style: const ButtonStyle(
                               backgroundColor:
-                              MaterialStatePropertyAll(Color(0xFFFDB813))),
+                                  MaterialStatePropertyAll(Color(0xFFFDB813))),
                           child: const Text("Offline Mode",
                               style: TextStyle(
                                   color: Color(0xFF005D4B),
                                   fontFamily: 'Aviano')),
                         ),
-                      ],
+                       ],
                     ),
                   ],
                 ),

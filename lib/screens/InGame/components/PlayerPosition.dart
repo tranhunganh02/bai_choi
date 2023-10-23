@@ -25,14 +25,19 @@ class _PlayerPositionState extends State<PlayerPosition> {
     setState(() {
       _isZoomed = !_isZoomed;
     });
-    print("trang thai $_isZoomed");
   }
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    print(widget.player.score);
+    super.initState();
+  }
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     if (widget.player.id == 1) {
@@ -62,16 +67,21 @@ class _PlayerPositionState extends State<PlayerPosition> {
               sigY: 35),
           Positioned(
             height: 25,
-            width: 50,
+            width: 60,
             bottom: 12,
-            left: 170,
+            left: 160,
             child: DefaultTextStyle(
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.black,
-                fontSize: 15,
+                fontSize: 14,
               ),
-              child: Text(widget.player.playerName, maxLines: 1, style: const TextStyle(color: Colors.white, fontFamily: 'Aviano'),),
+              child: Text(
+                widget.player.playerName,
+                maxLines: 1,
+                style: const TextStyle(
+                    color: Colors.white, fontFamily: 'Aviano',   fontSize: 14,),
+              ),
             ),
           )
         ],
@@ -102,21 +112,23 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[2].id,
               sigX: -45,
               sigY: 35),
-              Positioned(
+          Positioned(
             height: 25,
-            width: 50,
+            width: 60,
             bottom: 12,
-            right: 170,
+            right: 160,
             child: DefaultTextStyle(
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.black,
-                fontSize: 15,
+                fontSize: 14,
               ),
-              child: Text(widget.player.playerName, style: TextStyle(color: Colors.white, fontFamily: 'Aviano'),),
+              child: Text(
+                widget.player.playerName,
+                style: TextStyle(color: Colors.white, fontFamily: 'Aviano',   fontSize: 14,),
+              ),
             ),
           )
-          
         ],
       );
     }
@@ -150,16 +162,20 @@ class _PlayerPositionState extends State<PlayerPosition> {
               sigY: 35),
           Positioned(
             height: 25,
-            width: 50,
+            width: 60,
             top: 12,
-            right: 170,
+            right: 160,
             child: DefaultTextStyle(
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.black,
-                fontSize: 15,
+                fontSize: 14,
               ),
-              child: Text(widget.player.playerName, maxLines: 1, style: TextStyle(color: Colors.white, fontFamily: 'Aviano'),),
+              child: Text(
+                widget.player.playerName,
+                maxLines: 1,
+                style: TextStyle(color: Colors.white, fontFamily: 'Aviano',  fontSize: 14,),
+              ),
             ),
           )
         ],
@@ -196,16 +212,20 @@ class _PlayerPositionState extends State<PlayerPosition> {
               sigY: 35),
           Positioned(
             height: 25,
-            width: 50,
+            width: 60,
             top: 12,
-            left: 170,
+            left: 160,
             child: DefaultTextStyle(
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.black,
-                fontSize: 15,
+                fontSize: 14,
               ),
-              child: Text(widget.player.playerName, maxLines: 1, style: TextStyle(color: Colors.white, fontFamily: 'Aviano'),),
+              child: Text(
+                widget.player.playerName,
+                maxLines: 1,
+                style: TextStyle(color: Colors.white, fontFamily: 'Aviano',   fontSize: 14,),
+              ),
             ),
           )
         ],

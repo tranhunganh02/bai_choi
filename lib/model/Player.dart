@@ -1,5 +1,4 @@
 import 'package:bai_choi/model/Cards.dart';
-import 'package:bai_choi/services/test.dart';
 
 class Player {
   late int _id;

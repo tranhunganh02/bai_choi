@@ -61,27 +61,16 @@ class _EnterPlayerScreenState extends State<EnterPlayerScreen> {
     phoVanList = LS.getPhoVanList();
     phoVawnList = LS.getPhoVawnList();
 
-    // List<Player> players = MGS.getDataPlayer(
-    //     playerName1.text,
-    //     playerName2.text.isNotEmpty ? playerName2.text : "Bot 1",
-    //     playerName3.text.isNotEmpty ? playerName3.text : "Bot 2",
-    //     playerName4.text.isNotEmpty ? playerName4.text : "Bot 3",
-    //     phoSachList,
-    //     phoVanList,
-    //     phoVawnList);
-
     GameMatch match = MGS.createGameMatch(
         widget.maxRound,
         playerName1.text,
-        playerName2.text.isNotEmpty ? playerName2.text : "Bot 1",
-        playerName3.text.isNotEmpty ? playerName3.text : "Bot 2",
-        playerName4.text.isNotEmpty ? playerName4.text : "Bot 3",
+        playerName2.text.isNotEmpty ? playerName2.text : "Bot1",
+        playerName3.text.isNotEmpty ? playerName3.text : "Bot2",
+        playerName4.text.isNotEmpty ? playerName4.text : "Bot3",
         phoSachList,
         phoVanList,
-        phoVawnList
-    );
-    return
-    match;
+        phoVawnList);
+    return match;
   }
 
   @override
@@ -114,27 +103,26 @@ class _EnterPlayerScreenState extends State<EnterPlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme
-          .of(context)
-          .colorScheme
-          .primary,
+      floatingActionButton: FloatingActionButton.small(
+        onPressed: () => Navigator.pop(context),
+        child: const Icon(Icons.arrow_back),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Center(
           child: Wrap(
             spacing: 16,
             runSpacing: 16,
-            // mainAxisAlignment: MainAxisAlignment.center,
+            alignment: WrapAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              FloatingActionButton.small(
-                onPressed: () => Navigator.pop(context),
-                child: const Icon(Icons.arrow_back),
-              ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Row(
                   children: [
+                    SizedBox(width: 100,),
                     Text("Đặt tên:",
                         style: TextStyle(
                             fontFamily: "DelaGothicOne",
@@ -147,108 +135,42 @@ class _EnterPlayerScreenState extends State<EnterPlayerScreen> {
                                 offset: const Offset(3, 3),
                               )
                             ])),
+                    Container(
+                      width: 250,
+                      margin:const EdgeInsets.only(left: 100),
+                      child: TextField(
+                        controller: playerName1,
+                        focusNode: FocusNode(),
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Aviano',
+                            fontSize: 10),
+                        decoration: InputDecoration(
+                          errorBorder: const UnderlineInputBorder(),
+                          errorText:
+                              showError ? 'Nhập tên trước khi vào game' : null,
+                          errorStyle: const TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Aviano',
+                              fontSize: 7),
+                          enabled: true,
+                          fillColor: Colors.white,
+                          labelText: 'Nhập tên người chơi 1',
+                          border: const OutlineInputBorder(),
+                          labelStyle: const TextStyle(
+                              color: Color(0xFFFDB813),
+                              fontSize: 10,
+                              fontFamily: 'Aviano'),
+                        ),
+                        onChanged: (text) {
+                          playerName1.text = text;
+                        },
+                        textAlign: TextAlign.center,
+                        onTap: () {},
+                        onSubmitted: (String value) {},
+                      ),
+                    ),
                   ],
-                ),
-              ),
-              SizedBox(
-                width: 250,
-                child: TextField(
-                  controller: playerName1,
-                  focusNode: FocusNode(),
-                  style: const TextStyle(
-                    
-                      color: Colors.white, fontFamily: 'Aviano', fontSize: 10),
-                  decoration: InputDecoration(
-                    errorBorder: const UnderlineInputBorder(),
-                    errorText: showError ? 'Nhập tên trước khi vào game' : null,
-                    errorStyle: const TextStyle(
-                        color: Colors.white, fontFamily: 'Aviano', fontSize: 7),
-                    enabled: true,
-                    fillColor: Colors.white,
-                    labelText: 'Nhập tên người chơi 1',
-                    
-                    border: const OutlineInputBorder(),
-                    labelStyle: const TextStyle(
-                        color: Color(0xFFFDB813),
-                        fontSize: 10,
-                        fontFamily: 'Aviano'),
-                  ),
-                  onChanged: (text) {
-                    playerName1.text = text;
-                  },
-                  textAlign: TextAlign.center,
-                  onTap: () {},
-                  onSubmitted: (String value) {},
-                ),
-              ),
-              SizedBox(
-                width: 250,
-                child: TextField(
-                  controller: playerName2,
-                  style: const TextStyle(
-                      color: Colors.white, fontFamily: 'Aviano', fontSize: 10),
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    enabled: true,
-                    fillColor: Colors.white,
-                    labelText: 'Tên người chơi 2 (nếu có)',
-                    labelStyle: TextStyle(
-                        color: Color(0xFFFDB813),
-                        fontSize: 10,
-                        fontFamily: 'Aviano'),
-                  ),
-                  onChanged: (text) {
-                    playerName2.text = text;
-                  },
-                  textAlign: TextAlign.center,
-                  onTap: () {},
-                  onSubmitted: (String value) {},
-                ),
-              ),
-              SizedBox(
-                width: 250,
-                child: TextField(
-                  style: const TextStyle(
-                      color: Colors.white, fontFamily: 'Aviano', fontSize: 10),
-                  controller: playerName3,
-                  decoration: const InputDecoration(
-                      enabled: true,
-                      fillColor: Colors.blue,
-                      labelText: 'Tên người chơi 3 (nếu có)',
-                      labelStyle: TextStyle(
-                          color: Color(0xFFFDB813),
-                          fontSize: 10,
-                          fontFamily: 'Aviano'),
-                      border: OutlineInputBorder()),
-                  onChanged: (text) {
-                    playerName3.text = text;
-                  },
-                  textAlign: TextAlign.center,
-                  onTap: () {},
-                  onSubmitted: (String value) {},
-                ),
-              ),
-              SizedBox(
-                width: 250,
-                child: TextField(
-                  style: const TextStyle(
-                      color: Colors.white, fontFamily: 'Aviano', fontSize: 10),
-                  controller: playerName4,
-                  decoration: const InputDecoration(
-                      enabled: true,
-                      fillColor: Colors.white,
-                      labelText: 'Tên người chơi 4 (nếu có)',
-                      labelStyle: TextStyle(
-                          color: Color(0xFFFDB813),
-                          fontSize: 10,
-                          fontFamily: 'Aviano'),
-                      border: OutlineInputBorder()),
-                  onChanged: (text) {
-                    playerName4.text = text;
-                  },
-                  textAlign: TextAlign.center,
-                  onTap: () {},
-                  onSubmitted: (String value) {},
                 ),
               ),
               const SizedBox(),
@@ -263,7 +185,7 @@ class _EnterPlayerScreenState extends State<EnterPlayerScreen> {
                 child: const Text(
                   "Vào game",
                   style:
-                  TextStyle(color: Color(0xFF005D4B), fontFamily: 'Aviano'),
+                      TextStyle(color: Color(0xFF005D4B), fontFamily: 'Aviano'),
                 ),
               )
             ],

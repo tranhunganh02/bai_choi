@@ -3,10 +3,12 @@ import 'dart:math';
 
 import 'package:bai_choi/model/GameMatch.dart';
 import 'package:bai_choi/screens/InGame/components/PlayerPosition.dart';
+import 'package:bai_choi/screens/InGame/components/PositionPoint.dart';
 import 'package:bai_choi/screens/InGame/components/ResultGame.dart';
 import 'package:bai_choi/services/ModeGameServices.dart';
 import 'package:bai_choi/services/VideoGameService.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 import 'package:logger/logger.dart';
 import 'package:bai_choi/utils/routes.dart' as route;
@@ -23,7 +25,7 @@ class RoomScreen extends StatefulWidget {
   State<RoomScreen> createState() => _RoomScreenState();
 }
 
-class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
+class _RoomScreenState extends State<RoomScreen> {
   late int matchResult;
   bool getData = false;
   ModeGameServices RS = ModeGameServices();
@@ -37,6 +39,12 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
     setState(() {
       getData = true;
     });
+  }
+
+  //add gift to player over here
+  void saveImageUrls(List<String> imageUrls) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('imageUrls', imageUrls);
   }
 
   Future<void> addNewImage(String imgURL) async {
@@ -83,7 +91,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                 height: 150,
                 width: 50,
                 curve: Curves.easeInOut,
-                duration: const Duration(seconds: 2),
+                duration: const Duration(milliseconds: 1400),
                 child: Container(
                   height: 100,
                   width: 40,
@@ -98,7 +106,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
     Overlay.of(context).insert(overlayEntry);
 
     // Delay for a few seconds, then remove the overlay
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 3), () {
       overlayEntry.remove();
       // playNextVideo();
     }).then((value) => {addNewImage(song.isCard!.cardURL)});
@@ -115,7 +123,9 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
     if (_controller.value.position == _controller.value.duration) {
       _controller.pause();
       Song endedSong = widget.gameMatch.songs.removeAt(0);
-      showModal(endedSong);
+      if (endedSong.isCard?.cardssName != "Intro") {
+        showModal(endedSong);
+      }
       List<Player> players = widget.gameMatch.players;
       try {
         int matchedPlayerId = VGS.isMatchCard(endedSong.isCard, players);
@@ -149,38 +159,12 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
         if (matchResult != -1) {
           //showMatchResult(players[matchResult], 1);
           showMatchResult(players[matchResult], 1, context);
-        }else{
+        } else {
           showMatchResult(players[0], -1, context);
         }
       }
     }
   }
-
-  // void showMatchResult(Player player, int flagResult) {
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         if (flagResult != -1) {
-  //           return AlertDialog(
-  //             title: Text("Kết quả"),
-  //             content: Text("${player.playerName} chiến thắng"),
-  //             actions: [
-  //               TextButton(onPressed: () {}, child: Text("Về màn hình chính")),
-  //               TextButton(onPressed: () {}, child: Text("Chơi lại"))
-  //             ],
-  //           );
-  //         } else {
-  //           return AlertDialog(
-  //             title: Text("Kết quả"),
-  //             content: Text("Hòa"),
-  //             actions: [
-  //               TextButton(onPressed: () {}, child: Text("Về màn hình chính")),
-  //               TextButton(onPressed: () {}, child: Text("Chơi lại"))
-  //             ],
-  //           );
-  //         }
-  //       });
-  // }
 
   @override
   void dispose() {
@@ -263,9 +247,8 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                                   : Icons.play_arrow),
                               color: Colors.white,
                               style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStatePropertyAll(Colors.red.withOpacity(0.75))
-                              ),
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Colors.red.withOpacity(0.75))),
                             ),
                           ),
                           Positioned(
@@ -274,14 +257,15 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                             child: SizedBox(
                               child: IconButton(
                                 onPressed: () {
-                                  _controller.seekTo(_controller.value.duration - const Duration(seconds: 6));
+                                  _controller.seekTo(
+                                      _controller.value.duration -
+                                          const Duration(seconds: 3));
                                 },
                                 icon: const Icon(Icons.skip_next),
                                 color: Colors.white,
                                 style: ButtonStyle(
-                                    backgroundColor:
-                                    MaterialStatePropertyAll(Colors.red.withOpacity(0.75))
-                                ),
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        Colors.red.withOpacity(0.75))),
                               ),
                             ),
                           )
@@ -314,20 +298,24 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
             ]),
           ),
           PlayerPosition(player: widget.gameMatch.players[0]),
-          PlayerPosition(player: widget.gameMatch.players[1]),
+          PositionPoint(
+              score: widget.gameMatch.players[0].score,
+              typePLayer: widget.gameMatch.players[0].id),
+          PlayerPosition(
+            player: widget.gameMatch.players[1],
+          ),
+          PositionPoint(
+              score: widget.gameMatch.players[1].score,
+              typePLayer: widget.gameMatch.players[1].id),
           PlayerPosition(player: widget.gameMatch.players[2]),
+          PositionPoint(
+              score: widget.gameMatch.players[2].score,
+              typePLayer: widget.gameMatch.players[2].id),
           PlayerPosition(player: widget.gameMatch.players[3]),
+          PositionPoint(
+              score: widget.gameMatch.players[3].score,
+              typePLayer: widget.gameMatch.players[3].id),
         ])
-            //       : Center(
-            //           child: TextButton(
-            //               style: ButtonStyle(),
-            //               onPressed: startGame,
-            //               child: const Text(
-            //                 "Bắt đầu",
-            //                 style:
-            //                     TextStyle(fontFamily: "Aviano", color: Colors.white),
-            //               )),
-            //         ),
             ),
       ),
     );
