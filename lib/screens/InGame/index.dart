@@ -13,6 +13,7 @@ import 'package:video_player/video_player.dart';
 import 'package:logger/logger.dart';
 import 'package:bai_choi/utils/routes.dart' as route;
 
+import '../../model/Gift.dart';
 import '../../model/Player.dart';
 import '../../model/Song.dart';
 
@@ -32,7 +33,9 @@ class _RoomScreenState extends State<RoomScreen> {
   VideoGameServices VGS = VideoGameServices();
   late VideoPlayerController _controller;
   late int selectedId;
+  Random random = Random();
   var logger = Logger();
+  late int randomId;
   List<String> newURL = [];
 
   void startGame() {
@@ -42,11 +45,24 @@ class _RoomScreenState extends State<RoomScreen> {
   }
 
   //add gift to player over here
-  void saveImageUrls(List<String> imageUrls) async {
+  void saveGift() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setStringList('imageUrls', imageUrls);
+    randomId = random.nextInt(16);
+    if(randomId<=0){
+      randomId = random.nextInt(16);
+    }else{
+      prefs.setBool(randomId.toString(), true);
+    }
   }
 
+  Gift? getGift(int id){
+    for (Gift gift in bieuTuongVietNam){
+      if(gift.id == id){
+        return gift;
+      }
+    }
+    return null;
+  }
   Future<void> addNewImage(String imgURL) async {
     Timer(const Duration(seconds: 1), () {
       setState(() {
@@ -85,29 +101,29 @@ class _RoomScreenState extends State<RoomScreen> {
   }
 
   Future<void> showModal(Song song) async {
-    OverlayEntry overlayEntry = OverlayEntry(
-        builder: (context) => Center(
-              child: AnimatedPositioned(
-                height: 150,
-                width: 50,
-                curve: Curves.easeInOut,
-                duration: const Duration(milliseconds: 1400),
-                child: Container(
-                  height: 100,
-                  width: 40,
-                  child: song.isCard != null
-                      ? Image.asset(song.isCard!.cardURL)
-                      : Container(),
-                ),
-              ),
-            ));
-
-    // Insert the overlay entry
-    Overlay.of(context).insert(overlayEntry);
+    // OverlayEntry overlayEntry = OverlayEntry(
+    //     builder: (context) => Center(
+    //           child: AnimatedPositioned(
+    //             height: 150,
+    //             width: 50,
+    //             curve: Curves.easeInOut,
+    //             duration: const Duration(milliseconds: 1400),
+    //             child: Container(
+    //               height: 100,
+    //               width: 40,
+    //               child: song.isCard != null
+    //                   ? Image.asset(song.isCard!.cardURL)
+    //                   : Container(),
+    //             ),
+    //           ),
+    //         ));
+    //
+    // // Insert the overlay entry
+    // Overlay.of(context).insert(overlayEntry);
 
     // Delay for a few seconds, then remove the overlay
-    Future.delayed(const Duration(seconds: 3), () {
-      overlayEntry.remove();
+    Future.delayed(const Duration(seconds: 1), () {
+      // overlayEntry.remove();
       // playNextVideo();
     }).then((value) => {addNewImage(song.isCard!.cardURL)});
   }
@@ -132,6 +148,11 @@ class _RoomScreenState extends State<RoomScreen> {
         players[matchedPlayerId - 1].score++;
       } catch (e) {
         e.toString();
+      }
+      matchResult = VGS.isWin(players);
+
+      if (matchResult == 1) {
+        widget.gameMatch.songs.clear();
       }
       logScore(players);
 
@@ -159,6 +180,7 @@ class _RoomScreenState extends State<RoomScreen> {
         if (matchResult != -1) {
           //showMatchResult(players[matchResult], 1);
           showMatchResult(players[matchResult], 1, context);
+          saveGift();
         } else {
           showMatchResult(players[0], -1, context);
         }
@@ -199,7 +221,7 @@ class _RoomScreenState extends State<RoomScreen> {
         return confirmExit ?? false;
       },
       child: Container(
-        color: Theme.of(context).colorScheme.primary,
+        color: const Color(0xFFB22A21),
         child: Center(
             child: Stack(alignment: Alignment.center, children: [
           AnimatedPositioned(
@@ -259,7 +281,7 @@ class _RoomScreenState extends State<RoomScreen> {
                                 onPressed: () {
                                   _controller.seekTo(
                                       _controller.value.duration -
-                                          const Duration(seconds: 3));
+                                          const Duration(seconds: 6));
                                 },
                                 icon: const Icon(Icons.skip_next),
                                 color: Colors.white,
@@ -315,8 +337,7 @@ class _RoomScreenState extends State<RoomScreen> {
           PositionPoint(
               score: widget.gameMatch.players[3].score,
               typePLayer: widget.gameMatch.players[3].id),
-        ])
-            ),
+        ])),
       ),
     );
   }

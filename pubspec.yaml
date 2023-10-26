@@ -38,6 +38,7 @@ dependencies:
   transparent_image: ^2.0.1
   logger: ^2.0.2+1
   shared_preferences: ^2.2.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +90,7 @@ flutter:
     - assets/img/cards/pho_van/
     - assets/img/cards/pho_sach/
     - assets/img/cards/pho_vawn/
+    - assets/gift/bieu_tuong_viet/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

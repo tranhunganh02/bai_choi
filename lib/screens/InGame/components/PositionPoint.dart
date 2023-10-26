@@ -27,7 +27,7 @@ class _PositionPointState extends State<PositionPoint> {
                   decoration: BoxDecoration(
                       color: widget.score >= 1
                           ? const Color.fromARGB(255, 73, 146, 76)
-                          : Theme.of(context).colorScheme.primary,
+                          : Color(0xFFB22A21),
                       border: widget.score >= 1
                           ? const Border.symmetric(
                               vertical: BorderSide(width: 0.4))
@@ -44,7 +44,7 @@ class _PositionPointState extends State<PositionPoint> {
                 decoration: BoxDecoration(
                     color: widget.score >= 2
                         ? const Color.fromARGB(255, 73, 146, 76)
-                        : Theme.of(context).colorScheme.primary,
+                        : Color(0xFFB22A21),
                     border: widget.score >= 2
                         ? const Border.symmetric(
                             vertical: BorderSide(width: 0.4))
@@ -60,7 +60,7 @@ class _PositionPointState extends State<PositionPoint> {
                 decoration: BoxDecoration(
                     color: widget.score == 3
                         ? const Color.fromARGB(255, 73, 146, 76)
-                        : Theme.of(context).colorScheme.primary,
+                        : Color(0xFFB22A21),
                     border: widget.score == 3
                         ? const Border.symmetric(
                             vertical: BorderSide(width: 0.4))
@@ -82,7 +82,7 @@ class _PositionPointState extends State<PositionPoint> {
                 decoration: BoxDecoration(
                     color: widget.score >= 1
                         ? const Color.fromARGB(255, 73, 146, 76)
-                        : Theme.of(context).colorScheme.primary,
+                        : Color(0xFFB22A21),
                     border: widget.score >= 1
                         ? const Border.symmetric(
                             vertical: BorderSide(width: 0.4))
@@ -99,7 +99,7 @@ class _PositionPointState extends State<PositionPoint> {
               decoration: BoxDecoration(
                   color: widget.score >= 2
                       ? const Color.fromARGB(255, 73, 146, 76)
-                      : Theme.of(context).colorScheme.primary,
+                      : Color(0xFFB22A21),
                   border: widget.score >= 2
                       ? const Border.symmetric(vertical: BorderSide(width: 0.4))
                       : null),
@@ -114,7 +114,7 @@ class _PositionPointState extends State<PositionPoint> {
               decoration: BoxDecoration(
                   color: widget.score == 3
                       ? const Color.fromARGB(255, 73, 146, 76)
-                      : Theme.of(context).colorScheme.primary,
+                      : Color(0xFFB22A21),
                   border: widget.score == 3
                       ? const Border.symmetric(vertical: BorderSide(width: 0.4))
                       : null),
@@ -135,7 +135,7 @@ class _PositionPointState extends State<PositionPoint> {
                 decoration: BoxDecoration(
                     color: widget.score >= 1
                         ? const Color.fromARGB(255, 73, 146, 76)
-                        : Theme.of(context).colorScheme.primary,
+                        : Color(0xFFB22A21),
                     border: widget.score >= 1
                         ? const Border.symmetric(
                             vertical: BorderSide(width: 0.4))
@@ -152,7 +152,7 @@ class _PositionPointState extends State<PositionPoint> {
               decoration: BoxDecoration(
                   color: widget.score >= 2
                       ? const Color.fromARGB(255, 73, 146, 76)
-                      : Theme.of(context).colorScheme.primary,
+                      : Color(0xFFB22A21),
                   border: widget.score >= 2
                       ? const Border.symmetric(vertical: BorderSide(width: 0.4))
                       : null),
@@ -167,7 +167,7 @@ class _PositionPointState extends State<PositionPoint> {
               decoration: BoxDecoration(
                   color: widget.score == 3
                       ? const Color.fromARGB(255, 73, 146, 76)
-                      : Theme.of(context).colorScheme.primary,
+                      : Color(0xFFB22A21),
                   border: widget.score == 3
                       ? const Border.symmetric(vertical: BorderSide(width: 0.4))
                       : null),
@@ -188,7 +188,7 @@ class _PositionPointState extends State<PositionPoint> {
                 decoration: BoxDecoration(
                     color: widget.score >= 1
                         ? const Color.fromARGB(255, 73, 146, 76)
-                        : Theme.of(context).colorScheme.primary,
+                        : Color(0xFFB22A21),
                     border: widget.score >= 1
                         ? const Border.symmetric(
                             vertical: BorderSide(width: 0.4))
@@ -205,7 +205,7 @@ class _PositionPointState extends State<PositionPoint> {
               decoration: BoxDecoration(
                   color: widget.score >= 2
                       ? const Color.fromARGB(255, 73, 146, 76)
-                      : Theme.of(context).colorScheme.primary,
+                      : Color(0xFFB22A21),
                   border: widget.score >= 2
                       ? const Border.symmetric(vertical: BorderSide(width: 0.4))
                       : null),
@@ -220,7 +220,7 @@ class _PositionPointState extends State<PositionPoint> {
               decoration: BoxDecoration(
                   color: widget.score == 3
                       ? const Color.fromARGB(255, 73, 146, 76)
-                      : Theme.of(context).colorScheme.primary,
+                      : Color(0xFFB22A21),
                   border: widget.score == 3
                       ? const Border.symmetric(vertical: BorderSide(width: 0.4))
                       : null),

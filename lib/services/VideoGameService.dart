@@ -79,5 +79,15 @@ class VideoGameServices {
     }
   }
 
+  int isWin(List<Player> players) {
+
+    for (Player player in players){
+      if (player.score==3){
+        return 1;
+      }
+    }
+    return -1;
+  }
+
 
 }

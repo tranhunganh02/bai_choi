@@ -1,4 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:bai_choi/model/Gift.dart';
+import 'package:bai_choi/services/GiftService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:bai_choi/utils/routes.dart' as route;
@@ -8,14 +10,32 @@ import 'package:shared_preferences/shared_preferences.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   bool mute = true;
+  bool isFirstTimeUser = false;
+  GiftService GS = GiftService();
+
 
   final player = AudioPlayer();
+
+  Future<void> checkIsFirstUsing() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstTime = prefs.getBool('isFirstTimeUser') ?? true;
+
+    if (isFirstTime) {
+      setState(() {
+        isFirstTimeUser = true;
+        GS.createDataFirstTime(bieuTuongVietNam);
+      });
+
+      prefs.setBool('isFirstTimeUser', false);
+    }
+  }
 
   Future<void> playAudioFromFile() async {
     await player.play(AssetSource("audio/intro.mp3"));
@@ -41,6 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     playAudioFromFile();
+    checkIsFirstUsing();
     super.initState();
   }
 
@@ -75,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Expanded(child: Container()),
         Expanded(
             child: Container(
-          color: Theme.of(context).colorScheme.primary,
+          color: const Color(0xFFB22A21),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -158,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
       foregroundColor: Theme.of(context).colorScheme.onSecondary,
       childrenButtonSize: const Size.fromRadius(30),
       children: [
-         SpeedDialChild(
+        SpeedDialChild(
             shape: const CircleBorder(),
             label: "Phần quà của bạn",
             onTap: () {
@@ -186,7 +207,6 @@ class _HomeScreenState extends State<HomeScreen> {
             child: mute
                 ? const Icon(Icons.volume_mute)
                 : const Icon(Icons.volume_off)),
-       
       ],
     );
   }

@@ -5,7 +5,7 @@ import 'introduce_screen.dart';
 
 Container TutorialScreen(BuildContext context) {
   return Container(
-    color: Theme.of(context).colorScheme.primary,
+    color: Color(0xFFB22A21),
     child: Padding(
       padding: const EdgeInsets.all(10),
       child: ListView(

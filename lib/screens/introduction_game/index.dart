@@ -23,31 +23,30 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
           leading: IconButton(
             iconSize: 20,
             color: Colors.white,
-            style:const ButtonStyle(
+            style: const ButtonStyle(
                 alignment: Alignment.center,
-                padding: MaterialStatePropertyAll(
-                    EdgeInsets.all(5))), // Customize the arrow color here
+                padding: MaterialStatePropertyAll(EdgeInsets.all(5))),
+            // Customize the arrow color here
 
             onPressed: () {
               // Handle back button press here
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
           ),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(20.0), // Set
+          bottom: const PreferredSize(
+            preferredSize: Size.fromHeight(20.0), // Set
             child: TabBar(
               indicatorSize: TabBarIndicatorSize.tab,
               labelColor: Colors.white,
-              unselectedLabelColor:
-                  Theme.of(context).colorScheme.tertiaryContainer,
-              labelStyle: const TextStyle(fontFamily: "DelaGothicOne"),
-              tabs: const [
+              unselectedLabelColor: Color(0xFFFCDFA6),
+              labelStyle: TextStyle(fontFamily: "DelaGothicOne"),
+              tabs: [
                 Tab(text: "Giới thiệu"),
                 Tab(text: "Cách chơi"),
                 Tab(text: "Lá bài"),
               ],
-              indicatorColor: const Color(0xFF861414),
+              indicatorColor: Color(0xFF861414),
             ),
           ),
         ),

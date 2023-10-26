@@ -7,7 +7,7 @@ import 'type_card_screen.dart';
 SingleChildScrollView ListCard(BuildContext context) {
   return SingleChildScrollView(
     child: Container(
-      color: Theme.of(context).colorScheme.primary,
+      color: Color(0xFFB22A21),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [

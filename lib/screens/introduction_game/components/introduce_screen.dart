@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 Container IntroduceScreen(BuildContext context) {
   return Container(
-    color: Theme.of(context).colorScheme.primary,
+    color: Color(0xFFB22A21),
     child: Padding(
       padding: EdgeInsets.all(10),
       child: ListView(

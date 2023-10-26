@@ -108,7 +108,7 @@ class _EnterPlayerScreenState extends State<EnterPlayerScreen> {
         child: const Icon(Icons.arrow_back),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: Color(0xFFB22A21),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Center(

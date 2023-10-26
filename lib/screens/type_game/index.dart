@@ -12,7 +12,7 @@ class ChooseTypeGame extends StatefulWidget {
 
 class _ChooseTypeGameState extends State<ChooseTypeGame> {
   int maxRoundQuickMode = 9;
-  int maxRoundStandardMode = 30;
+  int maxRoundStandardMode = 23;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
