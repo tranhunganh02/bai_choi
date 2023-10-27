@@ -32,18 +32,16 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  google_fonts: ^6.1.0
   flutter_speed_dial: ^7.0.0
-  video_player: ^2.6.5
+  audioplayers: ^4.1.0
+  video_player: ^2.7.0
+  transparent_image: ^2.0.1
+  logger: ^2.0.2+1
+  shared_preferences: ^2.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
@@ -59,8 +57,35 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/audio/
     - assets/img/
     - assets/fonts/
+    - assets/videos/
+    - assets/videos/am/
+    - assets/videos/ba_ga/
+    - assets/videos/bach_tuyet/
+    - assets/videos/banh_ba/
+    - assets/videos/banh_hai/
+    - assets/videos/bat_bong/
+    - assets/videos/bay_day/
+    - assets/videos/chin_goi/
+    - assets/videos/cuu_chua/
+    - assets/videos/do_mo/
+    - assets/videos/intro/
+    - assets/videos/luc_xo/
+    - assets/videos/nam_run/
+    - assets/videos/ngu_dum/
+    - assets/videos/nhat_noc/
+    - assets/videos/nhi_bi/
+    - assets/videos/nhi_ngheo/
+    - assets/videos/nhut_tro/
+    - assets/videos/outro/
+    - assets/videos/sau_hot/
+    - assets/videos/sau_tien/
+    - assets/videos/tam_day/
+    - assets/videos/tam_quan/
+    - assets/videos/tam_tien/
+    - assets/videos/tu_dong/
     - assets/img/cards/pho_van/
     - assets/img/cards/pho_sach/
     - assets/img/cards/pho_vawn/

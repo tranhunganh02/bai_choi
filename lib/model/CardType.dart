@@ -1,5 +1,7 @@
 enum CardType{
   phoVan,
   phoVawn,
-  phoSach
+  phoSach,
+  NotCard
+
 }

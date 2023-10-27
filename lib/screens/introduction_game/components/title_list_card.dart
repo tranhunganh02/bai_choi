@@ -10,7 +10,7 @@ class TitleListCard extends StatelessWidget {
     return Text(
       title,
       textAlign: TextAlign.center,
-      style:const TextStyle(fontSize: 20, fontFamily: "Aviano"),
+      style:const TextStyle(fontSize: 20, fontFamily: "Aviano", color: Color(0xFFFDB813)),
     );
   }
 }
