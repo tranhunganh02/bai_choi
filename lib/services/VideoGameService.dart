@@ -34,7 +34,7 @@ class VideoGameServices {
     return randomSongList;
   }
 
-  List<Song> getRandomSongList(List<List<Song>> listSong) {
+  List<Song> getRandomSong(List<List<Song>> listSong) {
     List<Song> songList = [];
     for (var list in listSong) {
       var tempList = List.of(list);

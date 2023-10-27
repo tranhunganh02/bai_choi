@@ -75,7 +75,7 @@ class _RoomScreenState extends State<RoomScreen> {
   void initState() {
     List<List<Song>> songListLists =
         VGS.getRandomListSong(widget.gameMatch.maxRounds);
-    widget.gameMatch.songs = VGS.getRandomSongList(songListLists);
+    widget.gameMatch.songs = VGS.getRandomSong(songListLists);
     List<String> urlList = getURLList(widget.gameMatch.songs);
 
     _controller = VideoPlayerController.asset(urlList.first)

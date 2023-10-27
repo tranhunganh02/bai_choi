@@ -128,7 +128,7 @@ class _PositionPointState extends State<PositionPoint> {
             height: 15,
             width: 35,
             top: 20,
-            right: MediaQuery.of(context).size.width / 3 ,
+            right: MediaQuery.of(context).size.width / 3 + 15,
             child: AnimatedSize(
               duration: const Duration(milliseconds: 1000),
               child: Container(
@@ -161,7 +161,7 @@ class _PositionPointState extends State<PositionPoint> {
             height: 15,
             width: 35,
             top: 20,
-            right: MediaQuery.of(context).size.width / 3 + 60,
+            right: MediaQuery.of(context).size.width / 3 + 70,
             child: Container(
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
@@ -181,7 +181,7 @@ class _PositionPointState extends State<PositionPoint> {
             height: 15,
             width: 35,
             top: 20,
-            left: MediaQuery.of(context).size.width / 3,
+            left: MediaQuery.of(context).size.width / 3 + 15,
             child: AnimatedSize(
               duration: const Duration(milliseconds: 1000),
               child: Container(

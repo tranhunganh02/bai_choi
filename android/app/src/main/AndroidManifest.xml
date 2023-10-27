@@ -3,6 +3,7 @@
     <application
         android:label="Bài Chòi"
         android:name="${applicationName}"
+        android:extractNativeLibs="true"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
