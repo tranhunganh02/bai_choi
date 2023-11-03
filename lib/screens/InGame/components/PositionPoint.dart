@@ -19,52 +19,27 @@ class _PositionPointState extends State<PositionPoint> {
           Positioned(
               height: 15,
               width: 35,
-              bottom: 20,
+              bottom: 22,
               left: MediaQuery.of(context).size.width / 3,
               child: AnimatedSize(
                 duration: const Duration(milliseconds: 1000),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: widget.score >= 1
-                          ? const Color.fromARGB(255, 73, 146, 76)
-                          : Color(0xFFB22A21),
-                      border: widget.score >= 1
-                          ? const Border.symmetric(
-                              vertical: BorderSide(width: 0.4))
-                          : null),
-                ),
+                child: widget.score >= 1 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
               )),
           Positioned(
               height: 15,
               width: 35,
-              bottom: 20,
+              bottom: 22,
               left: MediaQuery.of(context).size.width / 3 + 30,
               child: Container(
-                padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    color: widget.score >= 2
-                        ? const Color.fromARGB(255, 73, 146, 76)
-                        : Color(0xFFB22A21),
-                    border: widget.score >= 2
-                        ? const Border.symmetric(
-                            vertical: BorderSide(width: 0.4))
-                        : null),
+                child: widget.score >= 2 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
               )),
           Positioned(
               height: 15,
               width: 35,
-              bottom: 20,
+              bottom: 22,
               left: MediaQuery.of(context).size.width / 3 + 60,
               child: Container(
-                padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    color: widget.score == 3
-                        ? const Color.fromARGB(255, 73, 146, 76)
-                        : Color(0xFFB22A21),
-                    border: widget.score == 3
-                        ? const Border.symmetric(
-                            vertical: BorderSide(width: 0.4))
-                        : null),
+                child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
               )),
         ],
       );
@@ -74,50 +49,29 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            bottom: 20,
+            bottom: 22,
             right: MediaQuery.of(context).size.width / 3,
             child: AnimatedSize(
               duration: const Duration(milliseconds: 1000),
               child: Container(
-                decoration: BoxDecoration(
-                    color: widget.score >= 1
-                        ? const Color.fromARGB(255, 73, 146, 76)
-                        : Color(0xFFB22A21),
-                    border: widget.score >= 1
-                        ? const Border.symmetric(
-                            vertical: BorderSide(width: 0.4))
-                        : null),
+                child: widget.score >= 1 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
               ),
             )),
         Positioned(
             height: 15,
             width: 35,
-            bottom: 20,
+            bottom: 22,
             right: MediaQuery.of(context).size.width / 3 + 30,
             child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: widget.score >= 2
-                      ? const Color.fromARGB(255, 73, 146, 76)
-                      : Color(0xFFB22A21),
-                  border: widget.score >= 2
-                      ? const Border.symmetric(vertical: BorderSide(width: 0.4))
-                      : null),
+             child: widget.score >= 2 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
             )),
         Positioned(
             height: 15,
             width: 35,
-            bottom: 20,
+            bottom: 22,
             right: MediaQuery.of(context).size.width / 3+ 60,
             child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: widget.score == 3
-                      ? const Color.fromARGB(255, 73, 146, 76)
-                      : Color(0xFFB22A21),
-                  border: widget.score == 3
-                      ? const Border.symmetric(vertical: BorderSide(width: 0.4))
-                      : null),
+             child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
             )),
       ],
     );
@@ -127,50 +81,29 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            top: 20,
+            top: 22,
             right: MediaQuery.of(context).size.width / 3 + 15,
             child: AnimatedSize(
               duration: const Duration(milliseconds: 1000),
               child: Container(
-                decoration: BoxDecoration(
-                    color: widget.score >= 1
-                        ? const Color.fromARGB(255, 73, 146, 76)
-                        : Color(0xFFB22A21),
-                    border: widget.score >= 1
-                        ? const Border.symmetric(
-                            vertical: BorderSide(width: 0.4))
-                        : null),
+              child: widget.score >= 1 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
               ),
             )),
         Positioned(
             height: 15,
             width: 35,
-            top: 20,
+            top: 22,
             right: MediaQuery.of(context).size.width / 3 + 30,
             child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: widget.score >= 2
-                      ? const Color.fromARGB(255, 73, 146, 76)
-                      : Color(0xFFB22A21),
-                  border: widget.score >= 2
-                      ? const Border.symmetric(vertical: BorderSide(width: 0.4))
-                      : null),
+             child: widget.score >= 2?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
             )),
         Positioned(
             height: 15,
             width: 35,
-            top: 20,
+            top: 22,
             right: MediaQuery.of(context).size.width / 3 + 70,
             child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: widget.score == 3
-                      ? const Color.fromARGB(255, 73, 146, 76)
-                      : Color(0xFFB22A21),
-                  border: widget.score == 3
-                      ? const Border.symmetric(vertical: BorderSide(width: 0.4))
-                      : null),
+             child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
             )),
       ],
     );
@@ -180,50 +113,29 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            top: 20,
+            top: 22,
             left: MediaQuery.of(context).size.width / 3 + 15,
             child: AnimatedSize(
               duration: const Duration(milliseconds: 1000),
               child: Container(
-                decoration: BoxDecoration(
-                    color: widget.score >= 1
-                        ? const Color.fromARGB(255, 73, 146, 76)
-                        : Color(0xFFB22A21),
-                    border: widget.score >= 1
-                        ? const Border.symmetric(
-                            vertical: BorderSide(width: 0.4))
-                        : null),
+              child: widget.score >= 1 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
               ),
             )),
         Positioned(
             height: 15,
             width: 35,
-            top: 20,
+            top: 22,
             left: MediaQuery.of(context).size.width / 3 + 30,
             child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: widget.score >= 2
-                      ? const Color.fromARGB(255, 73, 146, 76)
-                      : Color(0xFFB22A21),
-                  border: widget.score >= 2
-                      ? const Border.symmetric(vertical: BorderSide(width: 0.4))
-                      : null),
+             child: widget.score >= 2 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
             )),
         Positioned(
             height: 15,
             width: 35,
-            top: 20,
+            top: 22,
             left: MediaQuery.of(context).size.width / 3 + 60,
             child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: widget.score == 3
-                      ? const Color.fromARGB(255, 73, 146, 76)
-                      : Color(0xFFB22A21),
-                  border: widget.score == 3
-                      ? const Border.symmetric(vertical: BorderSide(width: 0.4))
-                      : null),
+             child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
             )),
       ],
     );
