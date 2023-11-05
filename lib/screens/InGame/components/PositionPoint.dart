@@ -81,7 +81,7 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            top: 22,
+            top: 17,
             right: MediaQuery.of(context).size.width / 3 + 15,
             child: AnimatedSize(
               duration: const Duration(milliseconds: 1000),
@@ -92,7 +92,7 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            top: 22,
+            top: 17,
             right: MediaQuery.of(context).size.width / 3 + 30,
             child: Container(
              child: widget.score >= 2?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
@@ -100,7 +100,7 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            top: 22,
+            top: 17,
             right: MediaQuery.of(context).size.width / 3 + 70,
             child: Container(
              child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
@@ -113,7 +113,7 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            top: 22,
+            top: 17,
             left: MediaQuery.of(context).size.width / 3 + 15,
             child: AnimatedSize(
               duration: const Duration(milliseconds: 1000),
@@ -124,7 +124,7 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            top: 22,
+            top: 17,
             left: MediaQuery.of(context).size.width / 3 + 30,
             child: Container(
              child: widget.score >= 2 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
@@ -132,7 +132,7 @@ class _PositionPointState extends State<PositionPoint> {
         Positioned(
             height: 15,
             width: 35,
-            top: 22,
+            top: 17,
             left: MediaQuery.of(context).size.width / 3 + 60,
             child: Container(
              child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
