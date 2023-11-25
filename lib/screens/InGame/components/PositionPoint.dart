@@ -1,144 +1,75 @@
 import 'package:flutter/material.dart';
 
-class PositionPoint extends StatefulWidget {
-  final int score;
-  final int typePLayer;
-  const PositionPoint(
-      {super.key, required this.score, required this.typePLayer});
+class BlinkingStar extends StatefulWidget {
+  final int type;
+  final int status;
+  final double sigX, sigY;
 
+  const BlinkingStar(
+      {super.key,
+      required this.type,
+      required this.status,
+      required this.sigX,
+      required this.sigY});
   @override
-  State<PositionPoint> createState() => _PositionPointState();
+  _BlinkingStarState createState() => _BlinkingStarState();
 }
 
-class _PositionPointState extends State<PositionPoint> {
+class _BlinkingStarState extends State<BlinkingStar>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    )..repeat(reverse: true);
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (widget.typePLayer == 1) {
-      return Stack(
-        children: [
-          Positioned(
-              height: 15,
-              width: 35,
-              bottom: 22,
-              left: MediaQuery.of(context).size.width / 3,
-              child: AnimatedSize(
-                duration: const Duration(milliseconds: 1000),
-                child: widget.score >= 1 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-              )),
-          Positioned(
-              height: 15,
-              width: 35,
-              bottom: 22,
-              left: MediaQuery.of(context).size.width / 3 + 30,
-              child: Container(
-                child: widget.score >= 2 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-              )),
-          Positioned(
-              height: 15,
-              width: 35,
-              bottom: 22,
-              left: MediaQuery.of(context).size.width / 3 + 60,
-              child: Container(
-                child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-              )),
-        ],
-      );
-    } else if (widget.typePLayer == 2) {
-        return Stack(
-      children: [
-        Positioned(
-            height: 15,
-            width: 35,
-            bottom: 22,
-            right: MediaQuery.of(context).size.width / 3,
-            child: AnimatedSize(
-              duration: const Duration(milliseconds: 1000),
-              child: Container(
-                child: widget.score >= 1 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-              ),
-            )),
-        Positioned(
-            height: 15,
-            width: 35,
-            bottom: 22,
-            right: MediaQuery.of(context).size.width / 3 + 30,
-            child: Container(
-             child: widget.score >= 2 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-            )),
-        Positioned(
-            height: 15,
-            width: 35,
-            bottom: 22,
-            right: MediaQuery.of(context).size.width / 3+ 60,
-            child: Container(
-             child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-            )),
-      ],
-    );
-    }else if(widget.typePLayer == 3){
-      return Stack(
-      children: [
-        Positioned(
-            height: 15,
-            width: 35,
-            top: 17,
-            right: MediaQuery.of(context).size.width / 3 + 15,
-            child: AnimatedSize(
-              duration: const Duration(milliseconds: 1000),
-              child: Container(
-              child: widget.score >= 1 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-              ),
-            )),
-        Positioned(
-            height: 15,
-            width: 35,
-            top: 17,
-            right: MediaQuery.of(context).size.width / 3 + 30,
-            child: Container(
-             child: widget.score >= 2?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-            )),
-        Positioned(
-            height: 15,
-            width: 35,
-            top: 17,
-            right: MediaQuery.of(context).size.width / 3 + 70,
-            child: Container(
-             child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-            )),
-      ],
-    );
-    }else {
-      return Stack(
-      children: [
-        Positioned(
-            height: 15,
-            width: 35,
-            top: 17,
-            left: MediaQuery.of(context).size.width / 3 + 15,
-            child: AnimatedSize(
-              duration: const Duration(milliseconds: 1000),
-              child: Container(
-              child: widget.score >= 1 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-              ),
-            )),
-        Positioned(
-            height: 15,
-            width: 35,
-            top: 17,
-            left: MediaQuery.of(context).size.width / 3 + 30,
-            child: Container(
-             child: widget.score >= 2 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-            )),
-        Positioned(
-            height: 15,
-            width: 35,
-            top: 17,
-            left: MediaQuery.of(context).size.width / 3 + 60,
-            child: Container(
-             child: widget.score >= 3 ?const Icon(Icons.star_purple500_sharp , color: Colors.yellow,) : Container(),
-            )),
-      ],
-    );
+    @override
+    void dispose() {
+      _controller.dispose();
+      _animation.isCompleted;
+      super.dispose();
     }
+
+    if (widget.status == 1) {
+      if (widget.type == 1) {
+        return Positioned(
+          bottom: widget.sigX,
+          left: widget.sigY,
+          child: Star(),
+        );
+      } else if (widget.type == 2) {
+        return Positioned(
+            bottom: widget.sigX, right: widget.sigY, child: Star());
+      } else if (widget.type == 3) {
+        return Positioned(top: widget.sigX, right: widget.sigY, child: Star());
+      } else {
+        return Positioned(top: widget.sigX, left: widget.sigY, child: Star());
+      }
+    } else {
+      return Container();
+    }
+  }
+
+  // ignore: non_constant_identifier_names
+  AnimatedBuilder Star() {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Icon(
+          Icons.star_rounded,
+          size: 30.0,
+          color: Colors.yellow.withOpacity(_animation.value),
+        );
+      },
+    );
   }
 }

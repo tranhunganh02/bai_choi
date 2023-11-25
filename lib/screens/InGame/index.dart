@@ -231,7 +231,7 @@ class _RoomScreenState extends State<RoomScreen> {
             width: MediaQuery.of(context).size.width * 0.38,
             child: Column(children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.35,
+                height: MediaQuery.of(context).size.height * 0.37,
                 width: double.maxFinite,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -320,23 +320,11 @@ class _RoomScreenState extends State<RoomScreen> {
             ]),
           ),
           PlayerPosition(player: widget.gameMatch.players[0]),
-          PositionPoint(
-              score: widget.gameMatch.players[0].score,
-              typePLayer: widget.gameMatch.players[0].id),
           PlayerPosition(
             player: widget.gameMatch.players[1],
           ),
-          PositionPoint(
-              score: widget.gameMatch.players[1].score,
-              typePLayer: widget.gameMatch.players[1].id),
           PlayerPosition(player: widget.gameMatch.players[2]),
-          PositionPoint(
-              score: widget.gameMatch.players[2].score,
-              typePLayer: widget.gameMatch.players[2].id),
           PlayerPosition(player: widget.gameMatch.players[3]),
-          PositionPoint(
-              score: widget.gameMatch.players[3].score,
-              typePLayer: widget.gameMatch.players[3].id),
         ])),
       ),
     );

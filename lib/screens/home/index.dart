@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
   GestureDetector Play_button(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // player.pause();
+        player.pause();
         // Navigator.pushNamed(context, route.modeGameScreen);
         Navigator.pushNamed(context, route.modeGameScreen);
       },

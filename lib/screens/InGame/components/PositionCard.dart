@@ -90,9 +90,10 @@ class _PositionCardState extends State<PositionCard>
       width: _isZoomed==true && selectedId == index ? 90 : 55,
       top: _isZoomed==true && selectedId == index ? 40 : sigX,
       left: _isZoomed==true && selectedId == index ? 150 : sigY,
-      child: Transform.rotate(
-          angle: _isZoomed==true && selectedId == index ? 0 : angle,
-          child: ImageCard(index, imgURL)),
+       child: Transform.rotate(
+        angle: _isZoomed && selectedId == index ? 0 : angle,
+        child: ImageCard(index, imgURL),
+      ),
     );
   }
 
@@ -106,8 +107,9 @@ class _PositionCardState extends State<PositionCard>
       bottom: _isZoomed==true && selectedId == index ? 40 : sigX,
       left: _isZoomed==true && selectedId == index ? 150 : sigY,
       child: Transform.rotate(
-          angle: _isZoomed==true && selectedId == index ? 0 : angle,
-          child: ImageCard(index, imgURL)),
+        angle: _isZoomed && selectedId == index ? 0 : angle,
+        child: ImageCard(index, imgURL),
+      ),
     );
   }
 
