@@ -47,6 +47,8 @@ class VideoGameServices {
   int isMatchCard(Cardss? card, List<Player> players) {
     for (var player in players) {
       if (player.cards.contains(card)) {
+        var checkIdxCard = player.cards.indexWhere((element) => element==card);
+        player.cards[checkIdxCard].status=1;
         return player.id;
       }
     }

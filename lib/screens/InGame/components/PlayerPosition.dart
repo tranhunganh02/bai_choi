@@ -54,7 +54,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[0].id,
               sigX: 10,
               sigY: -15),
-        BlinkingStar(type: 1, status: 1, sigX: 150, sigY: 25),
+        BlinkingStar(type: 1, status: widget.player.card[0].status, sigX: 150, sigY: 25),
           PositionCard(
               type: 1,
               angle: 0.78,
@@ -62,7 +62,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[1].id,
               sigX: -10,
               sigY: 15),
-          BlinkingStar(type: 1, status: 0, sigX: 105, sigY: 95),
+          BlinkingStar(type: 1, status:  widget.player.card[1].status, sigX: 105, sigY: 95),
           PositionCard(
               type: 1,
               angle: 1.22,
@@ -70,7 +70,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[2].id,
               sigX: -45,
               sigY: 35),
-          BlinkingStar(type: 1, status: 0, sigX: 40, sigY: 135),
+          BlinkingStar(type: 1, status:  widget.player.card[2].status, sigX: 40, sigY: 135),
           Positioned(
             height: 25,
             width: 60,
@@ -107,7 +107,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[0].id,
               sigX: 10,
               sigY: -15),
-          BlinkingStar(type: 2, status: 0, sigX: 150, sigY: 25),
+          BlinkingStar(type: 2, status:  widget.player.card[0].status, sigX: 150, sigY: 25),
           PositionCard(
               type: 2,
               angle: 5.49,
@@ -115,7 +115,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[1].id,
               sigX: -10,
               sigY: 15),
-          BlinkingStar(type: 2, status: 0, sigX: 105, sigY: 95),
+          BlinkingStar(type: 2, status:  widget.player.card[1].status, sigX: 105, sigY: 95),
           PositionCard(
               type: 2,
               angle: 5.06,
@@ -123,7 +123,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[2].id,
               sigX: -45,
               sigY: 35),
-          BlinkingStar(type: 2, status: 0, sigX: 40, sigY: 135),
+          BlinkingStar(type: 2, status:  widget.player.card[2].status, sigX: 40, sigY: 135),
           Positioned(
             height: 25,
             width: 60,
@@ -159,7 +159,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[0].id,
               sigX: 10,
               sigY: -15),
-          BlinkingStar(type: 3, status: 0, sigX: 150, sigY: 25),
+          BlinkingStar(type: 3, status:  widget.player.card[0].status, sigX: 150, sigY: 25),
 
           //   //       //       // AnimatedCardTopRight(12, 10, -15, 3.49, listCardVawn[6].cardURL),
 //   //       //       // AnimatedCardTopRight(5, -10, 15, 3.92, listCardSach[8].cardURL),
@@ -172,7 +172,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               sigX: -10,
               sigY: 15),
 
-          BlinkingStar(type: 3, status: 0, sigX: 105, sigY: 95),
+          BlinkingStar(type: 3, status:  widget.player.card[1].status, sigX: 105, sigY: 95),
           PositionCard(
               type: 3,
               angle: 4.36,
@@ -181,7 +181,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               sigX: -45,
               sigY: 35),
 
-          BlinkingStar(type: 3, status: 0, sigX: 40, sigY: 135),
+          BlinkingStar(type: 3, status:  widget.player.card[2].status, sigX: 40, sigY: 135),
           Positioned(
             height: 25,
             width: 60,
@@ -219,7 +219,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               indexCard: widget.player.card[0].id,
               sigX: 10,
               sigY: -15),
-          BlinkingStar(type: 4, status: 0, sigX: 150, sigY: 25),
+          BlinkingStar(type: 4, status:  widget.player.card[0].status, sigX: 150, sigY: 25),
 
           // AnimatedCardTopLeft(7, 10, -15, 2.79, listCardSach[4].cardURL),
 //   //       //       // AnimatedCardTopLeft(6, -10, 15, 2.35, listCardSach[7].cardURL),
@@ -232,7 +232,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               sigX: -10,
               sigY: 15),
 
-          BlinkingStar(type: 4, status: 0, sigX: 105, sigY: 95),
+          BlinkingStar(type: 4, status:  widget.player.card[1].status, sigX: 105, sigY: 95),
           PositionCard(
               type: 4,
               angle: 1.92,
@@ -241,7 +241,7 @@ class _PlayerPositionState extends State<PlayerPosition> {
               sigX: -45,
               sigY: 35),
 
-          BlinkingStar(type: 4, status: 0, sigX: 40, sigY: 135),
+          BlinkingStar(type: 4, status:  widget.player.card[2].status, sigX: 40, sigY: 135),
           Positioned(
             height: 25,
             width: 60,

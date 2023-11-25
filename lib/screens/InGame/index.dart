@@ -233,6 +233,7 @@ class _RoomScreenState extends State<RoomScreen> {
               Container(
                 height: MediaQuery.of(context).size.height * 0.37,
                 width: double.maxFinite,
+                margin: EdgeInsets.only(bottom: 10.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.yellow, width: 5),

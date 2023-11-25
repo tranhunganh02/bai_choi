@@ -6,7 +6,7 @@ class Cardss {
   late String _cardName;
   late CardType _cardType;
   late String _cardURL;
-
+  late int _status = 0;
   Cardss(this._id, this._cardName, this._cardType, this._cardURL);
 
   int get id => _id;
@@ -16,6 +16,12 @@ class Cardss {
   CardType get cardssType => _cardType;
 
   String get cardURL => _cardURL;
+
+  int get status => _status;
+
+  set status(int value) {
+    _status = value;
+  }
 
   set cardURL(String value) {
     _cardURL = value;
